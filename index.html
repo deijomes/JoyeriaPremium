@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JoyeriaPremium</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="/img/joyeria -  - removebg-preview.png">
+ 
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=favorite" />
+
+
+
+</head>
+
+<body>
+
+  <header class="header" id="header">
+
+    <img src="/img/istockphoto-1180931397-612x612.jpg" alt="" class="header__background">
+
+    <div class="header__capa"></div>
+
+    <nav class="nav container" id="navbar">
+      <a class="nav__logo">
+        <img src="/img/joyeria----removebg-preview.png" alt="Logo" class="nav__logo-img" id="logo-img">
+      </a>
+      <div class="nav__toggle" id="nav-toggle">
+        <span class="material-icons">menu</span> <!-- Icono de hamburguesa de Material Icons -->
+      </div>
+
+      <div class="nav__menu " id="nav-menu">
+        <div class="nav__close" id="nav-close"><span class="material-icons">close</span></div>
+        <ul class="nav__list">
+          <li class="nav__item"><a href="#home" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="#categoria" class="nav__link">Categoria</a></li>
+          <li class="nav__item"><a href="#descuentos" class="nav__link">Descuentos</a></li>
+          <li class="nav__item"><a href="#productos" class="nav__link">Productos</a></li>
+          <li class="nav__item"><a href="#" class="nav__link"><span class="material-icons">shopping_cart</span></a></li>
+          <li class="nav__item"><a href="#home" class="nav__link">ENTRAR</a></li>
+
+        </ul>
+      </div>
+
+
+
+
+    </nav>
+
+
+
+    <div class="nav__informacion">
+      <h1>Bienvenidos a Joyería Premium</h1>
+      <h2>Descubre la exclusividad en cada detalle</h2>
+      <p>En <span class="highlight">Joyeria premium</span>, ofrecemos productos únicos que combinan elegancia,
+        calidad y distinción.Transformamos tu espacio con estilo.</p>
+      <button class="cta">¡Conoce nuestros productos ahora!</button>
+    </div>
+
+
+
+  </header>
+  <main>
+    <div class="main__container">
+      
+        <h3 class="main__title">Explora nuestras categorías</h3>
+      
+     
+
+      <section>
+        <div class="categoria-card">
+          <img src="/img/joyeria-oro-tienda-.avif" alt="Imagen de categoría" class="categoria-img">
+          <div class="categoria-info">
+            <h3>Oro</h3>
+            <p>Descubre piezas exclusivas que brillan contigo.</p>
+            <button>Explorar ahora</button>
+          </div>
+        </div>
+
+        <div class="categoria-card">
+          <img src="/img/plata.jpg" alt="Imagen de categoría" class="categoria-img">
+          <div class="categoria-info">
+            <h3>Plata</h3>
+            <p>Brilla con la elegancia sutil de la plata.</p>
+            <button>Explorar ahora</button>
+          </div>
+        </div>
+        <div class="categoria-card">
+          <img src="/img/acero.jpg" alt="Imagen de categoría" class="categoria-img">
+          <div class="categoria-info">
+            <h3>Acero</h3>
+            <p>Fuerza, estilo y durabilidad en una sola pieza</p>
+            <button>Explorar ahora</button>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <aside>
+      <div class="aside__container">
+        <div class="aside__ofertas">
+          <img src="/img/porcentaje-removebg-preview.png" class="aside-img" alt="">
+          <p class="aside__parrafo">LAS MEJORES OFERTAS</p>
+
+        </div>
+
+        <div class="aside__capa"></div>
+      </div>
+    </aside>
+
+    <div class="container__slider">
+
+      <div class="slider-buttons">
+        <button onclick="prevSlide()">&#10094;</button>
+        <button onclick="nextSlide()">&#10095;</button>
+
+      </div>
+
+      <div class="dost-container"></div>
+
+      <div class="card-wrapper">
+
+
+        <ul class="card-list">
+         
+         
+          <li class="list-item">
+            <div class="card-image">
+              <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+  
+              <span class="material-symbols-outlined" id="icons">
+                favorite
+              </span>
+              <span class="badge">Pulsera</span>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">nn</h2>
+              <p class="card-price">
+  
+                <span class="current-price">$420.000</span>
+                <span class="old-price">$490.000</span>
+              </p>
+              <button class="card-btn">Comprar ahora</button>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="card-image">
+              <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+  
+              <span class="material-symbols-outlined" id="icons">
+                favorite
+              </span>
+              <span class="badge">Pulsera</span>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+              <p class="card-price">
+  
+                <span class="current-price">$420.000</span>
+                <span class="old-price">$490.000</span>
+              </p>
+              <button class="card-btn">Comprar ahora</button>
+            </div>
+          </li>
+          
+          <li class="list-item">
+            <div class="card-image">
+              <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+              <span class="material-icons cart-icon"> 
+                shopping_cart
+              </span>
+            
+              <span class="material-symbols-outlined icon-material" >
+                favorite
+              </span>
+              
+              <span class="badge">Pulsera</span>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+              <p class="card-price">
+                <span class="current-price">$420.000</span>
+                <span class="old-price">$490.000</span>
+                
+              </p>
+             
+              <button class="card-btn">Comprar ahora</button>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="card-image">
+              <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+              <span class="material-icons cart-icon"> 
+                shopping_cart
+              </span>
+            
+              <span class="material-symbols-outlined icon-material" >
+                favorite
+              </span>
+              
+              <span class="badge">Pulsera</span>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+              <p class="card-price">
+                <span class="current-price">$420.000</span>
+                <span class="old-price">$490.000</span>
+                
+              </p>
+             
+              <button class="card-btn">Comprar ahora</button>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="card-image">
+              <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+              <span class="material-icons cart-icon"> 
+                shopping_cart
+              </span>
+            
+              <span class="material-symbols-outlined icon-material" >
+                favorite
+              </span>
+              
+              <span class="badge">Pulsera</span>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+              <p class="card-price">
+                <span class="current-price">$420.000</span>
+                <span class="old-price">$490.000</span>
+                
+              </p>
+             
+              <button class="card-btn">Comprar ahora</button>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="card-image">
+              <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+              <span class="material-icons cart-icon"> 
+                shopping_cart
+              </span>
+            
+              <span class="material-symbols-outlined icon-material" >
+                favorite
+              </span>
+              
+              <span class="badge">Pulsera</span>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+              <p class="card-price">
+                <span class="current-price">$420.000</span>
+                <span class="old-price">$490.000</span>
+                
+              </p>
+             
+              <button class="card-btn">Comprar ahora</button>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="card-image">
+              <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+              <span class="material-icons cart-icon"> 
+                shopping_cart
+              </span>
+            
+              <span class="material-symbols-outlined icon-material" >
+                favorite
+              </span>
+              
+              <span class="badge">Pulsera</span>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+              <p class="card-price">
+                <span class="current-price">$420.000</span>
+                <span class="old-price">$490.000</span>
+                
+              </p>
+             
+              <button class="card-btn">Comprar ahora</button>
+            </div>
+          </li>
+          <li class="list-item">
+            <div class="card-image">
+              <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+              <span class="material-icons cart-icon"> 
+                shopping_cart
+              </span>
+            
+              <span class="material-symbols-outlined icon-material" >
+                favorite
+              </span>
+              
+              <span class="badge">Pulsera</span>
+            </div>
+            <div class="card-body">
+              <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+              <p class="card-price">
+                <span class="current-price">$420.000</span>
+                <span class="old-price">$490.000</span>
+                
+              </p>
+             
+              <button class="card-btn">Comprar ahora</button>
+            </div>
+          </li>
+          
+         
+          
+          
+  
+        </ul>
+  
+        
+        
+  
+  
+      </div>
+
+      
+
+
+    </div>
+
+    <div class="container__productos">
+      
+      <h3 class="main__title">Joyas a tu estilo</h3>
+
+    <section class="section__productos" >
+
+      <li class="list-item">
+        <div class="card-image">
+          <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+          <span class="material-symbols-outlined" id="icons">
+            favorite
+          </span>
+          <span class="badge">Pulsera</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">nn</h2>
+          <p class="card-price">
+
+            <span class="current-price">$420.000</span>
+            <span class="old-price">$490.000</span>
+          </p>
+          <button class="card-btn">Comprar ahora</button>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card-image">
+          <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+          <span class="material-symbols-outlined" id="icons">
+            favorite
+          </span>
+          <span class="badge">Pulsera</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+          <p class="card-price">
+
+            <span class="current-price">$420.000</span>
+            <span class="old-price">$490.000</span>
+          </p>
+          <button class="card-btn">Comprar ahora</button>
+        </div>
+      </li>
+      
+      <li class="list-item">
+        <div class="card-image">
+          <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+          <span class="material-icons cart-icon"> 
+            shopping_cart
+          </span>
+        
+          <span class="material-symbols-outlined icon-material" >
+            favorite
+          </span>
+          
+          <span class="badge">Pulsera</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+          <p class="card-price">
+            <span class="current-price">$420.000</span>
+            <span class="old-price">$490.000</span>
+            
+          </p>
+         
+          <button class="card-btn">Comprar ahora</button>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card-image">
+          <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+          <span class="material-icons cart-icon"> 
+            shopping_cart
+          </span>
+        
+          <span class="material-symbols-outlined icon-material" >
+            favorite
+          </span>
+          
+          <span class="badge">Pulsera</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+          <p class="card-price">
+            <span class="current-price">$420.000</span>
+            <span class="old-price">$490.000</span>
+            
+          </p>
+         
+          <button class="card-btn">Comprar ahora</button>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card-image">
+          <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+          <span class="material-icons cart-icon"> 
+            shopping_cart
+          </span>
+        
+          <span class="material-symbols-outlined icon-material" >
+            favorite
+          </span>
+          
+          <span class="badge">Pulsera</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+          <p class="card-price">
+            <span class="current-price">$420.000</span>
+            <span class="old-price">$490.000</span>
+            
+          </p>
+         
+          <button class="card-btn">Comprar ahora</button>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card-image">
+          <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+          <span class="material-icons cart-icon"> 
+            shopping_cart
+          </span>
+        
+          <span class="material-symbols-outlined icon-material" >
+            favorite
+          </span>
+          
+          <span class="badge">Pulsera</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+          <p class="card-price">
+            <span class="current-price">$420.000</span>
+            <span class="old-price">$490.000</span>
+            
+          </p>
+         
+          <button class="card-btn">Comprar ahora</button>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card-image">
+          <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+          <span class="material-icons cart-icon"> 
+            shopping_cart
+          </span>
+        
+          <span class="material-symbols-outlined icon-material" >
+            favorite
+          </span>
+          
+          <span class="badge">Pulsera</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+          <p class="card-price">
+            <span class="current-price">$420.000</span>
+            <span class="old-price">$490.000</span>
+            
+          </p>
+         
+          <button class="card-btn">Comprar ahora</button>
+        </div>
+      </li>
+      <li class="list-item">
+        <div class="card-image">
+          <img src="/img/joyeria-oro-tienda-.avif" alt="Pulsera en oro">
+
+          <span class="material-icons cart-icon"> 
+            shopping_cart
+          </span>
+        
+          <span class="material-symbols-outlined icon-material" >
+            favorite
+          </span>
+          
+          <span class="badge">Pulsera</span>
+        </div>
+        <div class="card-body">
+          <h2 class="card-title">Pulsera en oro con grosor 2.5</h2>
+          <p class="card-price">
+            <span class="current-price">$420.000</span>
+            <span class="old-price">$490.000</span>
+            
+          </p>
+         
+          <button class="card-btn">Comprar ahora</button>
+        </div>
+      </li>
+      
+    </section>
+  </div>
+
+  </main>
+
+ 
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+        <span>Joyería Premium</span>
+      </div>
+      <p>
+        Copyright &copy; <span id="year"></span>
+        <small> create by Mndoza.</small> Todos los derechos reservados.
+      </p>
+    </div>
+  </footer>
+  
+ 
+
+  <script src="/js/main.js"></script>
+
+
+
+
+</body>
+
+</html>
