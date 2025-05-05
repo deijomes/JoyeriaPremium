@@ -27,6 +27,9 @@ navItems.forEach(item => {
   });
 });
 
+
+
+
 iconFavorito.addEventListener('click', () => {
     navMenu.classList.add('active'); 
 });
