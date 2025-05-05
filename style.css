@@ -296,20 +296,21 @@ p {
        
         box-shadow: -15px 0 30px rgba(0, 0, 0, 0.3); 
 
-        background-color: var(--color-negro-elegante); 
+        background-color:#000000df; 
         overflow: hidden;
         opacity: 0;
         pointer-events: none;
         transform: translateX(100%);
         transition: transform 0.3s ease, opacity 0.3s ease;
+        
     }
     .nav__close {
         display: flex;
         align-items: center;
         justify-content: center;
     
-        width: 40px;
-        height: 40px;
+        width: 30px;
+        height: 30px;
         margin: 35px 0 0 10px;
     
         color: var(--color-dorado-claro);
@@ -321,6 +322,7 @@ p {
         
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        user-select: none;
 
     }
 
@@ -337,6 +339,7 @@ p {
     .nav__item a {
         color: var(--color-dorado);
         font-weight: bold;
+        user-select: none;
       }
 
       .nav__item a:hover {
