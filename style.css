@@ -192,7 +192,7 @@ p {
     color: #c6a643;
 }
 
-/* Solo agrega esta parte en tu archivo CSS */
+
 
 .nav__logo-img.fixed {
     margin-left: 25px;
@@ -420,6 +420,7 @@ p {
     width: 100%;
     height: 180px;
     object-fit: cover;
+    z-index: 10;
   }
   
   .categoria-info {
@@ -461,17 +462,48 @@ p {
 
   @media (max-width: 768px) {
     .categoria-card {
+      
+      position: relative;
       width: 250px;
       height: 100px;
-      margin-bottom: 3rem;
-      border-radius: 16px;
-      overflow: hidden;
-      background: var(--color-fondo---);
-      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-      transition: transform 0.4s ease, box-shadow 0.3s ease;
-     
       cursor: pointer;
+     
     }
+    .categoria-info {
+      width: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 20;
+      text-align: center;
+      padding: 0;
+    }
+    
+    .categoria-info h3 {
+      background: #0000005d;
+      color: var(--color-fondo-suave--);
+      margin: 0;
+      padding: 5px;
+      font-size: 1rem;
+      
+    }
+    
+
+    
+
+    .categoria-info p {
+      display: none;
+    }
+    
+    .categoria-info button {
+      display: none;
+    }
+  
+
+ 
+
+   
 
     .main__container-title{
       max-width: 100px;
@@ -489,11 +521,6 @@ p {
       position: relative;
     }
 
-   
-   
-
-    
-   
    
   }
 
