@@ -368,10 +368,6 @@ p {
     padding: 2rem;
     border-radius: 5px;
     background: radial-gradient(circle at center, #fdfbf9 0%, #e8d5b3 30%, #f5f2ed 90%);
-
-
-
-
   }
 
   
@@ -600,8 +596,6 @@ p {
     user-select: none;
   }
   
-
-  
   
   /* Cada tarjeta individual */
   .list-item {
@@ -813,6 +807,18 @@ p {
   display: flex;
   justify-content: center;
   overflow: hidden;
+  
+}
+
+.card-title {
+  display: block;
+  font-size: 1rem;
+  font-weight: normal;
+  color: var(--color-negro-elegante);
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
   
 }
 
