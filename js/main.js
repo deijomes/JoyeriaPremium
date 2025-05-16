@@ -205,12 +205,32 @@ window.addEventListener('scroll', scrollHandler);
 
 /*--------------------------------------------------------------Inicio sesion ---------------  */
 async function cargarVista(ruta) {
+  const contenedor = document.getElementById('contenido');
+
+  
+  contenedor.classList.add('fade-out');
+
+  // Esperar a que termine la animación antes de cargar
+  await new Promise(resolve => setTimeout(resolve, 300));
+
   try {
     const res = await fetch(ruta);
+    if (!res.ok) throw new Error('No se pudo cargar la vista');
+
     const html = await res.text();
-    document.getElementById('contenido').innerHTML = html;
+    contenedor.innerHTML = html;
+
+    // Animación de entrada
+    contenedor.classList.remove('fade-out');
+    contenedor.classList.add('fade-in');
+
+    // Eliminar clase después de la animación
+    setTimeout(() => {
+      contenedor.classList.remove('fade-in');
+    }, 300);
+    
   } catch (error) {
-    document.getElementById('contenido').innerHTML = '<p>Error al cargar el contenido.</p>';
+    contenedor.innerHTML = `<p style="color: red;">Error al cargar el contenido: ${error.message}</p>`;
   }
 }
 
@@ -241,7 +261,7 @@ document.getElementById('Inicio-Sesion').addEventListener('click', () => {
 });
 
 document.getElementById('home').addEventListener('click', () => {
-  window.location.href = 'index.html';
+  window.location.href = 'index.html'
 
   
   const imgBg = document.querySelector('.header__background');

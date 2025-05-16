@@ -532,6 +532,17 @@ p {
    
   }
 
+  /* CSS para la transición */
+  #contenido {
+  opacity: 1;
+  transition: opacity 0.10s ease;
+  }
+
+ #contenido.fade-out {
+  opacity: 0;
+ }
+
+
 
   
   /* ------------------------------------------------------------------ASIDE OFERTAS-------------------------------- */
