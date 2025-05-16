@@ -39,6 +39,7 @@ body {
     overflow: hidden;
   }
   
+ 
 .header__background {
     position: absolute;
     top: 0;
@@ -48,6 +49,8 @@ body {
     object-fit: cover;
     z-index: 1;
   }
+
+  
 
   .header__capa {
     position: absolute;
@@ -63,6 +66,7 @@ body {
     );
     z-index: 2;
   }
+  
   
   
   .nav {

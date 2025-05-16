@@ -179,21 +179,89 @@ setTimeout(() => {
   removeFirstCard();  // Eliminar la primera tarjeta después de 4 segundos
 }, 4000);
 
+document.getElementById("year").textContent = new Date().getFullYear();
+
+function scrollHandler() {
+  const nav = document.getElementById('navbar');
+  const img = document.getElementById('logo-img');
+  if (window.scrollY > 150) {
+    nav.classList.add('fixed');
+    img.classList.add('fixed');
+  } else {
+    nav.classList.remove('fixed');
+    img.classList.remove('fixed');
+  }
+}
+
+// 💡 Paso 2: Añade el evento scroll con la función nombrada
+window.addEventListener('scroll', scrollHandler);
 
 
-window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar');
-    const img = document.getElementById('logo-img');
-    if (window.scrollY > 150) {
-        nav.classList.add('fixed');
-        img.classList.add('fixed');
-    } else {
-        nav.classList.remove('fixed');
-        img.classList.remove('fixed');
-    }
+
+
+
+
+
+
+/*--------------------------------------------------------------Inicio sesion ---------------  */
+async function cargarVista(ruta) {
+  try {
+    const res = await fetch(ruta);
+    const html = await res.text();
+    document.getElementById('contenido').innerHTML = html;
+  } catch (error) {
+    document.getElementById('contenido').innerHTML = '<p>Error al cargar el contenido.</p>';
+  }
+}
+
+document.getElementById('Inicio-Sesion').addEventListener('click', () => {
+  cargarVista('admin/admin.html');
+
+  const imgBg = document.querySelector('.header__background');
+  const header = document.querySelector('.header');
+  const capa = document.querySelector('.header__capa');
+  const info = document.querySelector('.nav__informacion');
+
+  imgBg.style.display = 'none';
+  capa.style.display = 'none';
+  info.style.display = 'none';
+  header.style.height = 'auto';
+
+  const nav = document.querySelector('.container');
+  const img = document.getElementById('logo-img');
+  
+
+  nav.classList.add('fixed');
+  img.classList.add('fixed');
+  
+  
+
+
+  window.removeEventListener('scroll', scrollHandler);
+});
+
+document.getElementById('home').addEventListener('click', () => {
+  window.location.href = 'index.html';
+
+  
+  const imgBg = document.querySelector('.header__background');
+  const capa = document.querySelector('.header__capa');
+  const info = document.querySelector('.nav__informacion');
+  const header = document.querySelector('.header');
+  const nav = document.querySelector('.container');
+  const img = document.getElementById('logo-img');
+
+  if (imgBg) imgBg.style.display = '';
+  if (capa) capa.style.display = '';
+  if (info) info.style.display = '';
+  if (header) header.style.height = '100vh';
+
+  if (nav) nav.classList.remove('fixed');
+  if (img) img.classList.remove('fixed');
+
+ 
+  window.addEventListener('scroll', scrollHandler);
 });
 
 
-
-document.getElementById("year").textContent = new Date().getFullYear();
 

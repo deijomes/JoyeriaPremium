@@ -1,0 +1,67 @@
+
+:root {
+    --color-dorado: #c6a643;             /* Color principal dorado oro */
+    --color-dorado-claro: #e5c76f;       /* Para efectos hover o detalles */
+    --color-dorado-oscuro: #8f772d;      /* Para bordes o sombreado */
+    --color-negro-elegante: #1c1c1c;     /* Fondo oscuro elegante */
+    --color-fondo---: #edf1f3;       /* Texto claro o fondo secundario */
+    --color-fondo-suave--: #f7e5e5;       /* Texto claro o fondo secundario */
+    --color-marron-cuero: #5c3a1e;       /* Detalles tipo cuero */
+  }
+  
+body {
+  font-family: 'Segoe UI', sans-serif;
+  padding: 20px;
+  background-color: #f9fafb;
+  margin: 40px 80px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+th, td {
+  padding: 16px;
+  text-align: left;
+  font-size: 14px;
+}
+th {
+  background-color: var(--color-fondo---);
+  color: var(--color-marron-cuero);
+  font-weight: 600;
+}
+td {
+  border-top: 1px solid #f0f0f0;
+  vertical-align: middle;
+}
+.img-box {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-fondo---);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.img-box img {
+  width: 30px;
+}
+.actions i {
+  margin: 0 5px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+.actions i.fa-pen {
+  background-color: #fff7ed;
+  color: var(--color-dorado);
+}
+.actions i.fa-trash {
+  background-color: #fee2e2;
+  color: var(--color-marron-cuero);
+}
