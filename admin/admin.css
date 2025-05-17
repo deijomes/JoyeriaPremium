@@ -66,9 +66,9 @@ td {
 /*----------------------------FORM CONTAINER---------------------------------*/
 
 .form-container{
-    margin: 120px auto;
+    margin: 160px auto 20px;
   max-width: 80%;
-  min-height: 80vh;
+  min-height: 70vh;
  
   
 }
@@ -181,6 +181,7 @@ td {
   padding-top: 10px;
   margin: auto;
   max-width: 80%;
+  
   
   background-color: var(--color-fondo-suave--);
 }
