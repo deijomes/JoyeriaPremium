@@ -63,18 +63,17 @@ td {
 }
 
 
-form {
-    background-color: white;
-    padding: 2rem;
-    max-width: 600px;
-    margin: 0 auto 40px;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
-    font-size: 14px;
-    color: var(--color-marron-cuero);
-    font-weight: 500;
-    width: 400px;
-  }
+/*----------------------------FORM CONTAINER---------------------------------*/
+
+.form-container{
+    margin: 120px auto;
+  max-width: 80%;
+  min-height: 80vh;
+ 
+  
+}
+
+
   
   form h2 {
     color: var(--color-dorado);
@@ -104,7 +103,7 @@ form {
   
   form input:focus {
     outline: none;
-    border-color: var(--color-dorado);
+   
     box-shadow: 0 0 1px var(--color-dorado);
   }
   
@@ -134,7 +133,7 @@ form {
     justify-content: space-between;
   }
   
-  form {
+  .card-form {
     flex: 1; /* que ocupen el mismo ancho */
     min-width: 300px;
     max-width: 500px;
@@ -145,15 +144,37 @@ form {
   }
 
   .formulario-compra{
-    background-color: white;
+    overflow: hidden;
     padding: 2rem;
-    max-width: 600px;
+    min-width: 70%;
+    max-height: 450px;
     margin: 0 auto 40px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgb(0 0 0 / 0.1);
     font-size: 14px;
     color: var(--color-marron-cuero);
     font-weight: 500;
-    width: 80%;
+   
   }
-  
+ .formulario-compra input{
+  margin-top: 8px;
+   outline: none;
+    border-color: var(--color-dorado-claro);
+    box-shadow: 0 0 1px var(--color-dorado);
+ }
+ .tablaProductos{
+  margin-top: 1rem;
+  width: 100%;
+ }
+
+ .container-tabla{
+  margin-top: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-dorado-claro) transparent;
+ }
+
+
+
+ 

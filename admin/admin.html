@@ -70,6 +70,8 @@
 </table>
 
 <div class="form-container">
+
+   <div class="card-form">
     <form id="productoForm" class="formulario">
       <h2>Registrar compra</h2>
       <label for="nombreProducto">Nombre del Producto</label>
@@ -86,26 +88,32 @@
   
       <button type="submit" class="btn-agregar">Agregar</button>
     </form>
+   </div>
+    
   
-    <form id="envioCompraForm" class="formulario">
-      <h2>Resumen de compra</h2>
-      <label for="proveedor">Proveedor</label>
-      <input type="text" id="proveedor" name="proveedor" required />
-  
-      <table id="tablaProductos">
-        <thead>
-          <tr>
-            <th>Nombre</th>
-            <th>Código</th>
-            <th>Precio</th>
-            <th>Cantidad</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
-  
-      <button type="submit">Enviar compra</button>
-    </form>
+<form id="envioCompraForm" class="formulario-compra">
+  <h2>Resumen de compra</h2>
+
+  <label for="proveedor">Proveedor</label>
+  <input type="text" id="proveedor" name="proveedor" required />
+
+  <div class="container-tabla">
+    <table id="tablaProductos" class="tablaProductos">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Código</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <button type="submit">Enviar compra</button>
+</form>
+
   </div>
   
 
