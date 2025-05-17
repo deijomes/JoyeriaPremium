@@ -371,7 +371,7 @@ p {
 
   main {
    
-    flex: 1;
+   
     min-height: 100vh;
     background-color: var(--color-blanco-suave);
   }

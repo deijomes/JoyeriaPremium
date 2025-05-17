@@ -1,3 +1,5 @@
+
+console.log("✅ El archivo .js se ha cargado correctamente");
 // Seleccionar los elementos del DOM
 const navToggle = document.getElementById('nav-toggle');
 const navClose = document.getElementById('nav-close');
@@ -218,6 +220,12 @@ async function cargarVista(ruta) {
 
     const html = await res.text();
     contenedor.innerHTML = html;
+
+    const script = document.createElement('script');
+     script.src = 'js/admin.js';  
+     script.type = 'text/javascript';
+     script.defer = true;
+    document.body.appendChild(script);
 
     contenedor.classList.remove('fade-out');
     contenedor.classList.add('fade-in');
