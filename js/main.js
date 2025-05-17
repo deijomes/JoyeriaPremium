@@ -210,7 +210,6 @@ async function cargarVista(ruta) {
   
   contenedor.classList.add('fade-out');
 
-  // Esperar a que termine la animación antes de cargar
   await new Promise(resolve => setTimeout(resolve, 300));
 
   try {
@@ -220,11 +219,9 @@ async function cargarVista(ruta) {
     const html = await res.text();
     contenedor.innerHTML = html;
 
-    // Animación de entrada
     contenedor.classList.remove('fade-out');
     contenedor.classList.add('fade-in');
 
-    // Eliminar clase después de la animación
     setTimeout(() => {
       contenedor.classList.remove('fade-in');
     }, 300);
@@ -260,28 +257,6 @@ document.getElementById('Inicio-Sesion').addEventListener('click', () => {
   window.removeEventListener('scroll', scrollHandler);
 });
 
-document.getElementById('home').addEventListener('click', () => {
-  window.location.href = 'index.html'
-
-  
-  const imgBg = document.querySelector('.header__background');
-  const capa = document.querySelector('.header__capa');
-  const info = document.querySelector('.nav__informacion');
-  const header = document.querySelector('.header');
-  const nav = document.querySelector('.container');
-  const img = document.getElementById('logo-img');
-
-  if (imgBg) imgBg.style.display = '';
-  if (capa) capa.style.display = '';
-  if (info) info.style.display = '';
-  if (header) header.style.height = '100vh';
-
-  if (nav) nav.classList.remove('fixed');
-  if (img) img.classList.remove('fixed');
-
- 
-  window.addEventListener('scroll', scrollHandler);
-});
 
 
 

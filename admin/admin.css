@@ -9,14 +9,10 @@
     --color-marron-cuero: #5c3a1e;       /* Detalles tipo cuero */
   }
   
-body {
-  font-family: 'Segoe UI', sans-serif;
-  padding: 20px;
-  background-color: #f9fafb;
-  margin: 120px 80px;
-}
+
 table {
-  width: 100%;
+  margin: 120px auto;
+  width: 80%;
   border-collapse: collapse;
   background-color: #fff;
   border-radius: 8px;
