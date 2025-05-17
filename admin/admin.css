@@ -174,7 +174,24 @@ td {
   scrollbar-width: thin;
   scrollbar-color: var(--color-dorado-claro) transparent;
  }
+.productos-container{
+  border-top-left-radius: 7px;
+   border-top-right-radius: 7px;
+  display: flex;
+  padding-top: 10px;
+  margin: auto;
+  max-width: 80%;
+  
+  background-color: var(--color-fondo-suave--);
+}
 
+.productos-container h2{
+ margin: auto;
+  text-align: center;
+  padding: 10px;
+  font-size: 24px;
+  letter-spacing: 2px;
+}
 
 
  
