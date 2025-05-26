@@ -171,6 +171,7 @@ td {
   margin-top: 10px;
   max-height: 200px;
   overflow-y: auto;
+  overflow-x: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--color-dorado-claro) transparent;
  }
@@ -202,7 +203,7 @@ td {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.759);
+  background-color: rgba(0, 0, 0, 0.666);
   z-index: 9999;
   align-items: center;
   justify-content: center;
@@ -210,18 +211,16 @@ td {
 
 
 
-/* --- Contenido del modal --- */
 .modal-contenido {
   background-color: #fff;
   padding: 30px;
   border-radius: 10px;
   width: 90%;
-  max-width: 500px;
+  max-width: 450px;
   position: relative;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Botón para cerrar el modal */
 .cerrar-modal {
   position: absolute;
   top: 10px;
@@ -231,4 +230,28 @@ td {
   color: var(--color-marron-cuero);
   cursor: pointer;
 }
+
+
+    @media (max-width: 768px) {
+       .form-container {
+         flex-direction: column;
+         gap: 20px; /* espacio entre formularios */
+        
+     }
+
+     .form-envioCompra{
+      max-width: 300px;
+     }
+
+     
+
+     
+
+
+     
+  
+    
+      
+    }
+
 
