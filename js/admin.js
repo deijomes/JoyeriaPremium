@@ -42,3 +42,19 @@ const productos = [];
       tbody.appendChild(fila);
     });
   }
+
+  function abrirModal() {
+    document.getElementById('modalProducto').style.display = 'flex';
+  }
+
+  function cerrarModal() {
+    document.getElementById('modalProducto').style.display = 'none';
+  }
+
+  // Cierra el modal si se hace clic fuera del contenido
+  window.onclick = function(event) {
+    const modal = document.getElementById('modalProducto');
+    if (event.target === modal) {
+      modal.style.display = 'none';
+    }
+  }
