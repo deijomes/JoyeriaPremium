@@ -175,14 +175,19 @@ td {
   scrollbar-width: thin;
   scrollbar-color: var(--color-dorado-claro) transparent;
  }
+
+ .Cont{
+  max-width: 80%;
+  margin: auto;
+ }
+
+ 
 .productos-container{
   border-top-left-radius: 7px;
    border-top-right-radius: 7px;
   display: flex;
   padding-top: 10px;
   margin: auto;
-  max-width: 80%;
-  
   
   background-color: var(--color-fondo-suave--);
 }
@@ -194,6 +199,13 @@ td {
   font-size: 24px;
   letter-spacing: 2px;
 }
+
+.productos-table table {
+  width: 100%;
+
+}
+
+
 
 /* --- Modal completo --- */
 .modal {
@@ -235,7 +247,7 @@ td {
     @media (max-width: 768px) {
        .form-container {
          flex-direction: column;
-         gap: 20px; /* espacio entre formularios */
+         gap: 20px; 
         
      }
 
@@ -243,15 +255,33 @@ td {
       max-width: 300px;
      }
 
-     
-
-     
-
-
-     
-  
-    
+      .productos-table{
       
+      max-height: 400px;
+     overflow-y: auto;
+     overflow-x: auto;
+     scrollbar-width: thin;
+      scrollbar-color: var(--color-dorado-claro) transparent;
+    }
+     .Cont{
+      
+      max-width: 300px;
+      margin-left: 30px;
+      display: flex;
+        flex-direction: column;
+        text-align: center;
+     }
+     
+     .productos-container {
+         width: 100%;  
+      }
+
+     .productos-container h2 {
+       font-size: 16px; 
+       letter-spacing: 1px; 
+       display: block; 
+      }
+    
     }
 
 
