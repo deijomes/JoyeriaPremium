@@ -71,6 +71,7 @@ td {
   min-height: 70vh;
  
   
+  
 }
 
 
@@ -128,7 +129,7 @@ td {
 
   .form-container {
     display: flex;
-    gap: 20px; /* espacio entre formularios */
+    gap: 30px; /* espacio entre formularios */
     align-items: flex-start;
     justify-content: space-between;
   }
@@ -141,6 +142,9 @@ td {
     padding: 16px;
     border-radius: 8px;
     background-color: #f9f9f9;
+  }
+  .form-envioCompra{
+    width: 700px;
   }
 
   .formulario-compra{
@@ -281,6 +285,12 @@ td {
        letter-spacing: 1px; 
        display: block; 
       }
+
+      .modal-contenido {
+     
+      max-width: 320px;
+ 
+    }
     
     }
 
