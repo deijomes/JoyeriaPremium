@@ -202,15 +202,12 @@ td {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.759);
   z-index: 9999;
   align-items: center;
   justify-content: center;
 }
 
-.modal.mostrar {
-  display: flex;
-}
 
 
 /* --- Contenido del modal --- */
@@ -231,7 +228,7 @@ td {
   right: 15px;
   font-size: 28px;
   font-weight: bold;
-  color: #999;
+  color: var(--color-marron-cuero);
   cursor: pointer;
 }
 
