@@ -251,6 +251,8 @@ document.getElementById('Inicio-Sesion').addEventListener('click', () => {
   const item_Dscuento = document.getElementById('descuento');
   const item_productos = document.getElementById('producto');
   const navList = document.querySelector(".nav__list");
+  const inicioSesion = document.getElementById('Inicio-Sesion');
+  const badge = document.querySelector('.user-badge');
  
 
   imgBg.style.display = 'none';
@@ -261,6 +263,9 @@ document.getElementById('Inicio-Sesion').addEventListener('click', () => {
   item_Dscuento.style.display = 'none'; 
   item_home.style.display = 'none';
   item_productos.style.display = 'none';
+  inicioSesion.parentElement.remove(); 
+
+  badge.style.display = 'inline-block'
 
   const nav = document.querySelector('.container');
   const img = document.getElementById('logo-img');
