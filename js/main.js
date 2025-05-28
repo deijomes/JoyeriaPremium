@@ -246,11 +246,21 @@ document.getElementById('Inicio-Sesion').addEventListener('click', () => {
   const header = document.querySelector('.header');
   const capa = document.querySelector('.header__capa');
   const info = document.querySelector('.nav__informacion');
+  const item_home = document.getElementById('home');
+  const item_Ctgoria = document.getElementById('categoria');
+  const item_Dscuento = document.getElementById('descuento');
+  const item_productos = document.getElementById('producto');
+  const navList = document.querySelector(".nav__list");
+ 
 
   imgBg.style.display = 'none';
   capa.style.display = 'none';
   info.style.display = 'none';
   header.style.height = 'auto';
+  item_Ctgoria.style.display = 'none';
+  item_Dscuento.style.display = 'none'; 
+  item_home.style.display = 'none';
+  item_productos.style.display = 'none';
 
   const nav = document.querySelector('.container');
   const img = document.getElementById('logo-img');
@@ -258,11 +268,14 @@ document.getElementById('Inicio-Sesion').addEventListener('click', () => {
 
   nav.classList.add('fixed');
   img.classList.add('fixed');
-  
-  
-
 
   window.removeEventListener('scroll', scrollHandler);
+
+
+    const liInicio = document.createElement("li");
+    liInicio.classList.add("nav__item");
+    liInicio.innerHTML = '<a href="index.html" class="nav__link">Home</a>';
+    navList.insertBefore(liInicio, navList.children[4]);
 });
 
 
