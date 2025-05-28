@@ -283,6 +283,22 @@ document.getElementById('Inicio-Sesion').addEventListener('click', () => {
     navList.insertBefore(liInicio, navList.children[4]);
 });
 
+const userToggle = document.querySelector('.user-toggle');
+const dropdownMenu = document.querySelector('.dropdown-menu');
+
+userToggle.addEventListener('click', function (e) {
+  e.preventDefault(); 
+  dropdownMenu.classList.toggle('show');
+});
+
+// Cerrar el menú si haces clic fuera
+document.addEventListener('click', function (e) {
+  if (!e.target.closest('.nav__item--perfil')) {
+    dropdownMenu.classList.remove('show');
+  }
+});
+
+
 
 
 
