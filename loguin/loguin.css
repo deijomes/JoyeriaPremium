@@ -14,17 +14,7 @@
   padding: 0;
 }
 
-body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #E5C76F;
-  background: radial-gradient(circle,rgba(229, 199, 111, 0.68) 0%, rgba(143, 119, 45, 0.88) 100%);
-  color: white;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
+
 .logo {
   text-align: center;
   margin-bottom: 10px;
@@ -48,6 +38,7 @@ body {
   position: relative;
   animation: fadeIn 1s ease;
   border: 2px solid var(--color-dorado-oscuro);
+  margin: 150px auto;
 }
 
 .btn {
@@ -134,18 +125,7 @@ input:focus {
   color: var(--color-dorado-oscuro);
 }
 
-.btn {
-  width: 100%;
-  padding: 12px;
-  background-color: var(--color-dorado-claro);
-  border: none;
-  border-radius: 10px;
-  color: var(--color-marron-cuero);
-  font-weight: bold;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
+
 
 .btn:hover {
   background-color: var(--color-dorado);
@@ -159,6 +139,10 @@ footer {
   text-align: center;
 }
 
-.highlight {
-  color: #61b4e4;
+@media (max-width: 768px) {
+.login-container {
+ 
+  max-width: 320px;
+ 
+}
 }
