@@ -4,7 +4,7 @@ console.log("✅ El archivo .js se ha cargado correctamente");
 const navToggle = document.getElementById('nav-toggle');
 const navClose = document.getElementById('nav-close');
 const navMenu = document.getElementById('nav-menu');
-const iconFavorito =  document.getElementById('icons');
+const iconFavorito = document.getElementById('icons');
 const navItems = document.querySelectorAll('.nav__item');
 
 
@@ -15,12 +15,12 @@ const dost = document.querySelector('.dost-container');
 
 
 navToggle.addEventListener('click', () => {
-    navMenu.classList.add('visible'); 
+  navMenu.classList.add('visible');
 });
 
 
 navClose.addEventListener('click', () => {
-    navMenu.classList.remove('visible'); 
+  navMenu.classList.remove('visible');
 });
 
 navItems.forEach(item => {
@@ -33,27 +33,27 @@ navItems.forEach(item => {
 
 
 iconFavorito.addEventListener('click', () => {
-    navMenu.classList.add('active'); 
+  navMenu.classList.add('active');
 });
 
 
-  document.addEventListener("DOMContentLoaded", () => {
-    const icon = document.getElementById("icons");
+document.addEventListener("DOMContentLoaded", () => {
+  const icon = document.getElementById("icons");
 
-    icon.addEventListener("click", () => {
-      icon.classList.toggle("active");
-    });
+  icon.addEventListener("click", () => {
+    icon.classList.toggle("active");
   });
+});
 
-  
+
 
 const cardList = document.querySelector('.card-list');
-let itemWidth = document.querySelector('.list-item')?.offsetWidth || 300; 
+let itemWidth = document.querySelector('.list-item')?.offsetWidth || 300;
 let scrollPosition = 0;
 
 
 function updateItemWidth() {
-  itemWidth = document.querySelector('.list-item')?.offsetWidth || 300; 
+  itemWidth = document.querySelector('.list-item')?.offsetWidth || 300;
 }
 
 // Función para mover a la siguiente tarjeta
@@ -111,7 +111,7 @@ function handleSwipe(start, end) {
   const threshold = 50;
 
   if (diff > threshold) {
-    nextSlide(); 
+    nextSlide();
   } else if (diff < -threshold) {
     prevSlide();
   }
@@ -209,7 +209,7 @@ window.addEventListener('scroll', scrollHandler);
 async function cargarVista(ruta) {
   const contenedor = document.getElementById('contenido');
 
-  
+
   contenedor.classList.add('fade-out');
 
   await new Promise(resolve => setTimeout(resolve, 300));
@@ -222,9 +222,9 @@ async function cargarVista(ruta) {
     contenedor.innerHTML = html;
 
     const script = document.createElement('script');
-     script.src = 'js/admin.js';  
-     script.type = 'text/javascript';
-     script.defer = true;
+    script.src = 'js/admin.js';
+    script.type = 'text/javascript';
+    script.defer = true;
     document.body.appendChild(script);
 
     contenedor.classList.remove('fade-out');
@@ -233,13 +233,27 @@ async function cargarVista(ruta) {
     setTimeout(() => {
       contenedor.classList.remove('fade-in');
     }, 300);
-    
+
   } catch (error) {
     contenedor.innerHTML = `<p style="color: red;">Error al cargar el contenido: ${error.message}</p>`;
   }
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const boton = document.getElementById('Inicio-Sesion');
+  if (boton) {
+    boton.addEventListener('click', (e) => {
+      e.preventDefault();
+      cargarVista('admin/loguin/loguin.html');
+    });
+  }
+});
 
-document.getElementById('Inicio-Sesion').addEventListener('click', () => {
+function cargarVista(url) {
+  window.location.href = url; 
+}
+
+
+document.getElementById().addEventListener('click', () => {
   cargarVista('admin/admin.html');
 
   const imgBg = document.querySelector('.header__background');
@@ -253,23 +267,23 @@ document.getElementById('Inicio-Sesion').addEventListener('click', () => {
   const navList = document.querySelector(".nav__list");
   const inicioSesion = document.getElementById('Inicio-Sesion');
   const badge = document.querySelector('.user-badge');
- 
+
 
   imgBg.style.display = 'none';
   capa.style.display = 'none';
   info.style.display = 'none';
   header.style.height = 'auto';
   item_Ctgoria.style.display = 'none';
-  item_Dscuento.style.display = 'none'; 
+  item_Dscuento.style.display = 'none';
   item_home.style.display = 'none';
   item_productos.style.display = 'none';
-  inicioSesion.parentElement.remove(); 
+  inicioSesion.parentElement.remove();
 
   badge.style.display = 'inline-block'
 
   const nav = document.querySelector('.container');
   const img = document.getElementById('logo-img');
-  
+
 
   nav.classList.add('fixed');
   img.classList.add('fixed');
@@ -277,12 +291,12 @@ document.getElementById('Inicio-Sesion').addEventListener('click', () => {
   window.removeEventListener('scroll', scrollHandler);
 
 
-    const liInicio = document.createElement("li");
-    liInicio.classList.add("nav__item");
-    liInicio.innerHTML = '<a href="index.html" class="nav__link">Home</a>';
-   
-    navList.insertBefore(liInicio, navList.children[4]);
-    liInicio.style.cursor = "pointer";
+  const liInicio = document.createElement("li");
+  liInicio.classList.add("nav__item");
+  liInicio.innerHTML = '<a href="index.html" class="nav__link">Home</a>';
+
+  navList.insertBefore(liInicio, navList.children[4]);
+  liInicio.style.cursor = "pointer";
 
 });
 
@@ -290,7 +304,7 @@ const userToggle = document.querySelector('.user-toggle');
 const dropdownMenu = document.querySelector('.dropdown-menu');
 
 userToggle.addEventListener('click', function (e) {
-  e.preventDefault(); 
+  e.preventDefault();
   dropdownMenu.classList.toggle('show');
 });
 
