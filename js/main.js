@@ -280,7 +280,10 @@ document.getElementById('Inicio-Sesion').addEventListener('click', () => {
     const liInicio = document.createElement("li");
     liInicio.classList.add("nav__item");
     liInicio.innerHTML = '<a href="index.html" class="nav__link">Home</a>';
+   
     navList.insertBefore(liInicio, navList.children[4]);
+    liInicio.style.cursor = "pointer";
+
 });
 
 const userToggle = document.querySelector('.user-toggle');
