@@ -209,10 +209,14 @@ window.addEventListener('scroll', scrollHandler);
 
 async function cargarVista(ruta) {
   const contenedor = document.getElementById('contenido');
+  const header = document.querySelector('header');
+  const footer = document.querySelector('footer');
 
-  
+
+  if (header) header.style.display = 'block';
+  if (footer) footer.style.display = 'block';
+
   contenedor.classList.add('fade-out');
-
   await new Promise(resolve => setTimeout(resolve, 300));
 
   try {
@@ -223,9 +227,9 @@ async function cargarVista(ruta) {
     contenedor.innerHTML = html;
 
     const script = document.createElement('script');
-     script.src = 'js/admin.js';  
-     script.type = 'text/javascript';
-     script.defer = true;
+    script.src = 'js/admin.js';
+    script.type = 'text/javascript';
+    script.defer = true;
     document.body.appendChild(script);
 
     contenedor.classList.remove('fade-out');
@@ -234,11 +238,16 @@ async function cargarVista(ruta) {
     setTimeout(() => {
       contenedor.classList.remove('fade-in');
     }, 300);
-    
   } catch (error) {
     contenedor.innerHTML = `<p style="color: red;">Error al cargar el contenido: ${error.message}</p>`;
   }
+
+  
 }
+
+
+
+
 
 
 // Mueve esto FUERA de la función cargarVista
@@ -281,7 +290,7 @@ document.addEventListener('click', (e) => {
       if (inicioSesion) inicioSesion.parentElement.remove();
 
       if (badge) badge.style.display = 'inline-block';
-     
+
 
       const nav = document.querySelector('.container');
       const img = document.getElementById('logo-img');
