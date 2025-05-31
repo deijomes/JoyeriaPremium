@@ -974,12 +974,16 @@ footer {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 50%;
+  width: 100%; /* <-- Ocupa todo el ancho disponible */
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 
+
+
 .footer-logo {
- margin: auto;
+ 
   gap: 0.5rem;
   margin-bottom: 0.5rem;
 }

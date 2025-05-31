@@ -170,9 +170,7 @@ function removeFirstCard() {
   }
 }
 
-// -------------------------
-// Simulación de cambios dinámicos
-// -------------------------
+
 setTimeout(() => {
   addNewCard();  // Agregar una nueva tarjeta después de 2 segundos
 }, 2000);
@@ -238,11 +236,13 @@ async function cargarVista(ruta) {
     setTimeout(() => {
       contenedor.classList.remove('fade-in');
     }, 300);
+
+    
   } catch (error) {
     contenedor.innerHTML = `<p style="color: red;">Error al cargar el contenido: ${error.message}</p>`;
   }
 
-  
+
 }
 
 
@@ -252,8 +252,9 @@ async function cargarVista(ruta) {
 
 // Mueve esto FUERA de la función cargarVista
 document.addEventListener('click', (e) => {
+  // LOGIN ADMIN
   if (e.target && e.target.id === 'btn') {
-    e.preventDefault(); // ✅ Evita que recargue la página
+    e.preventDefault();
 
     const email = document.getElementById('email').value.trim();
     const password = document.getElementById('password').value.trim();
@@ -264,7 +265,6 @@ document.addEventListener('click', (e) => {
     }
 
     if (email === 'admin@joyeria.com' && password === 'admin123') {
-
       const imgBg = document.querySelector('.header__background');
       const header = document.querySelector('.header');
       const capa = document.querySelector('.header__capa');
@@ -278,7 +278,6 @@ document.addEventListener('click', (e) => {
       const badge = document.querySelector('.user-badge');
       const footer = document.querySelector('.footer-content');
 
-
       if (imgBg) imgBg.style.display = 'none';
       if (capa) capa.style.display = 'none';
       if (info) info.style.display = 'none';
@@ -288,13 +287,10 @@ document.addEventListener('click', (e) => {
       if (item_home) item_home.style.display = 'none';
       if (item_productos) item_productos.style.display = 'none';
       if (inicioSesion) inicioSesion.parentElement.remove();
-
       if (badge) badge.style.display = 'inline-block';
-
 
       const nav = document.querySelector('.container');
       const img = document.getElementById('logo-img');
-
       if (nav) nav.classList.add('fixed');
       if (img) img.classList.add('fixed');
 
@@ -302,19 +298,56 @@ document.addEventListener('click', (e) => {
 
       const liInicio = document.createElement("li");
       liInicio.classList.add("nav__item");
-      liInicio.innerHTML = '<a href="index.html" class="nav__link">Home</a>';
+      liInicio.innerHTML = '<a href="#" class="nav__link" id="link-home">Home</a>';
       liInicio.style.cursor = "pointer";
 
       if (navList && navList.children.length >= 4) {
         navList.insertBefore(liInicio, navList.children[4]);
       }
+
       cargarVista('admin/admin.html');
     }
+  }
 
+  // ENLACE "HOME"
+ document.addEventListener('click', (e) => {
+  // Al hacer clic en "Home"
+  if (e.target && e.target.id === 'link-home') {
+    e.preventDefault();
 
+    cargarVista('home/home.html');
 
+    const oldLi = e.target.closest('li');
+    const newLi = document.createElement('li');
+    newLi.classList.add('nav__item');
+    newLi.innerHTML = '<a href="#" class="nav__link" id="link-act">Inicio</a>';
+    newLi.style.cursor = 'pointer';
+
+    if (oldLi && oldLi.parentNode) {
+      oldLi.parentNode.replaceChild(newLi, oldLi);
+    }
+  }
+
+  // Al hacer clic en "Inicio" (que vuelve al admin)
+  if (e.target && e.target.id === 'link-act') {
+    e.preventDefault();
+
+    cargarVista('admin/admin.html');
+
+    const oldLi = e.target.closest('li');
+    const newLi = document.createElement('li');
+    newLi.classList.add('nav__item');
+    newLi.innerHTML = '<a href="#" class="nav__link" id="link-home">Act</a>';
+    newLi.style.cursor = 'pointer';
+
+    if (oldLi && oldLi.parentNode) {
+      oldLi.parentNode.replaceChild(newLi, oldLi);
+    }
   }
 });
+
+});
+
 
 async function Vista(ruta, ocultarNavbarFooter = false) {
   const contenedor = document.getElementById('contenido');
@@ -374,6 +407,37 @@ document.addEventListener('click', function (e) {
   }
 });
 
+
+
+function vistaHome(ruta) {
+  fetch(ruta)
+    .then(response => response.text())
+    .then(html => {
+      const main = document.querySelector('main');
+      if (main) {
+        main.innerHTML = html;
+      }
+    })
+    .catch(error => {
+      console.error("Error al cargar la vista:", error);
+    });
+}
+
+// 👇 Resto del código donde usas cargarVista()
+document.addEventListener('click', (e) => {
+  if (e.target && e.target.id === 'btn') {
+    // ... código para validar login
+
+    // 👇 Ejemplo de uso
+    vistaHome('admin/admin.html');
+  }
+
+  // O si tienes un botón "Home" dinámico
+  if (e.target && e.target.id === 'link-home') {
+    e.preventDefault();
+    cargarVista('home/home.html');
+  }
+});
 
 
 
