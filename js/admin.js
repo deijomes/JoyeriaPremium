@@ -2,6 +2,7 @@ const productos = [];
 
 document.querySelector(".btn-agregar").addEventListener("click", function (e) {
   e.preventDefault(); // Prevenir el envío del formulario
+   console.log("Botón clic detectado");
 
   const nombreProducto = document.getElementById("nombreProducto").value;
   const codigoProducto = document.getElementById("codigoProducto").value;

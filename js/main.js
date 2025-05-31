@@ -209,14 +209,10 @@ window.addEventListener('scroll', scrollHandler);
 
 async function cargarVista(ruta) {
   const contenedor = document.getElementById('contenido');
-  const header = document.querySelector('header');
-  const footer = document.querySelector('footer');
 
-
-  if (header) header.style.display = 'block';
-  if (footer) footer.style.display = 'block';
-
+  
   contenedor.classList.add('fade-out');
+
   await new Promise(resolve => setTimeout(resolve, 300));
 
   try {
@@ -226,19 +222,23 @@ async function cargarVista(ruta) {
     const html = await res.text();
     contenedor.innerHTML = html;
 
+    const script = document.createElement('script');
+     script.src = 'js/admin.js';  
+     script.type = 'text/javascript';
+     script.defer = true;
+    document.body.appendChild(script);
+
     contenedor.classList.remove('fade-out');
     contenedor.classList.add('fade-in');
 
     setTimeout(() => {
       contenedor.classList.remove('fade-in');
     }, 300);
+    
   } catch (error) {
     contenedor.innerHTML = `<p style="color: red;">Error al cargar el contenido: ${error.message}</p>`;
   }
-
-
 }
-
 
 
 // Mueve esto FUERA de la función cargarVista

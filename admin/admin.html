@@ -37,93 +37,93 @@
 
     <div class="form-envioCompra">
 
-       <form id="envioCompraForm" class="formulario-compra">
-      <h2>Resumen de compra</h2>
+      <form id="envioCompraForm" class="formulario-compra">
+        <h2>Resumen de compra</h2>
 
-      <label for="proveedor">Proveedor</label>
-      <input type="text" id="proveedor" name="proveedor" required />
+        <label for="proveedor">Proveedor</label>
+        <input type="text" id="proveedor" name="proveedor" required />
 
-      <div class="container-tabla">
-        <table id="tablaProductos" class="tablaProductos">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Código</th>
-              <th>Precio</th>
-              <th>Cantidad</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
-      </div>
+        <div class="container-tabla">
+          <table id="tablaProductos" class="tablaProductos">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Código</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
 
-      <button type="submit">Enviar compra</button>
-    </form>
+        <button type="submit">Enviar compra</button>
+      </form>
 
     </div>
-   
+
 
   </div>
 
   <div class="Cont">
-    
-  <div class="productos-container">
-    <h2>Productos Registrados</h2>
+
+    <div class="productos-container">
+      <h2>Productos Registrados</h2>
+    </div>
+
+    <div class="productos-table">
+
+      <table>
+        <thead>
+          <tr>
+
+            <th>Producto</th>
+            <th>Codigo</th>
+            <th>Categoria</th>
+            <th>Descripción</th>
+            <th>precio de venta</th>
+            <th>Descuento</th>
+            <th>Stock</th>
+            <th>Opciones</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+
+            <td>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="img-box">
+                  <img src="/img/cadena-removebg-preview.png" alt="shirt">
+                </div>
+                <span>Fashion Men , Women &amp; Kid's</span>
+              </div>
+            </td>
+            <td>C5588</td>
+            <td>Seller</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>46233</td>
+            <td class="actions">
+
+              <i class="fa fa-pen" onclick="abrirModal()"></i>
+              <i class="fa fa-trash"></i>
+            </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+
   </div>
 
-  <div class="productos-table">
-
- <table  >
-    <thead>
-      <tr>
-
-        <th>Producto</th>
-        <th>Codigo</th>
-        <th>Categoria</th>
-        <th>Descripción</th>
-        <th>precio de venta</th>
-        <th>Descuento</th>
-        <th>Stock</th>
-        <th>Opciones</th>
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-
-        <td>
-          <div style="display: flex; align-items: center; gap: 12px;">
-            <div class="img-box">
-              <img src="/img/cadena-removebg-preview.png" alt="shirt">
-            </div>
-            <span>Fashion Men , Women &amp; Kid's</span>
-          </div>
-        </td>
-        <td>C5588</td>
-        <td>Seller</td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>46233</td>
-        <td class="actions">
-
-          <i class="fa fa-pen" onclick="abrirModal()"></i>
-          <i class="fa fa-trash"></i>
-        </td>
-      </tr>
-
-    </tbody>
-  </table>
-  </div>
- 
-  </div>
-
-    <!-- Modal -->
+  <!-- Modal -->
   <div id="modalProducto" class="modal">
     <div class="modal-contenido card-form">
       <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
       <form id="productoVentaForm" class="formulario" enctype="multipart/form-data">
-      
+
 
         <label for="descripcion">Descripción</label>
         <input type="text" id="descripcion" name="descripcion" placeholder="Descripción del producto" required />
@@ -135,11 +135,12 @@
         <input type="number" step="0.01" id="descuento" name="descuento" placeholder="10" />
 
         <label for="imagen">Imagen del producto</label>
-        <input type="file"  id="imagen" name="imagen" accept="image/*" />
+        <input type="file" id="imagen" name="imagen" accept="image/*" />
 
         <button type="submit" class="btn-agregar">Guardar</button>
       </form>
     </div>
+  </div>
 
 
   <script src="/js/admin.js"></script>
