@@ -66,7 +66,7 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
-  align-items: center;      /* <- Esto alinea verticalmente */
+  align-items: center;      
   justify-content: space-between;
 
   background-color: #1a1a1a;
@@ -149,6 +149,97 @@ body {
   justify-content: center;
   cursor: pointer;
 }
+
+.nav__toggle{
+    display: none;
+}
+.nav__close{
+    display: none;
+    color: #c6a643;
+}
+@media (max-width: 768px) {
+  .container {
+    margin: 5px 20px;
+  }
+
+  .nav__logo-text {
+    max-width: 200px;
+    font-size: 14px;
+  }
+
+  .nav__logo-img {
+    height: 30px;
+  }
+
+  .nav__toggle {
+    display: block;
+    color: var(--color-dorado-oscuro);
+    cursor: pointer;
+  }
+
+  .nav__menu.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  .nav__menu {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    right: 0;
+    text-align: right;
+    width: 50%;
+    box-shadow: -15px 0 30px rgba(0, 0, 0, 0.3);
+    background-color: #000000df;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(100%);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .nav__close {
+    display: flex;
+    position: absolute;
+    top: 1rem;
+    left: 20px;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    color: var(--color-dorado-claro);
+    background-color: var(--color-negro-elegante);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1),
+                0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    user-select: none;
+  }
+
+  .nav__list {
+    height: 100vh;
+    flex-direction: column;
+    
+    align-items: end;
+    margin-left: 80px;
+    padding: 70px 0 0 10px;
+    backdrop-filter: blur(1px);
+  }
+
+  .nav__item a {
+    color: var(--color-dorado);
+    font-weight: bold;
+    user-select: none;
+  }
+
+  .nav__item a:hover {
+    color: #ffffff;
+  }
+}
+
+
 
 /*-----------------------------------------------------FOOTER-----------------------------------------------*/
 footer {
