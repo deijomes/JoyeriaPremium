@@ -9,6 +9,247 @@
     --color-marron-cuero: #5c3a1e;       /* Detalles tipo cuero */
   }
   
+* {
+    margin: 0 ;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+  }
+  
+:root {
+    --color-dorado: #c6a643;             /* Color principal dorado oro */
+    --color-dorado-claro: #e5c76f;       /* Para efectos hover o detalles */
+    --color-dorado-oscuro: #8f772d;      /* Para bordes o sombreado */
+    --color-negro-elegante: #1c1c1c;     /* Fondo oscuro elegante */
+    --color-fondo---: #edf1f3;       /* Texto claro o fondo secundario */
+    --color-fondo-suave--: #f7e5e5;       /* Texto claro o fondo secundario */
+    --color-marron-cuero: #5c3a1e;       /* Detalles tipo cuero */
+  }
+  
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+
+
+
+body {
+   margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  
+  background-color:#f5f2ed ;
+  font-family: 'Roboto', sans-serif;
+
+
+  
+}
+
+
+
+/*----------------------------------------------HEADER---------------------------------*/
+
+.header {
+  background-color: #1a1a1a;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: fixed;      
+  top: 0;             
+  left: 0;
+  width: 100%;          
+  z-index: 20;        
+}
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;      /* <- Esto alinea verticalmente */
+  justify-content: space-between;
+
+  background-color: #1a1a1a;
+}
+
+
+.nav__logo {
+  display: flex;
+  
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav__logo-img {
+  
+  height: 50px;
+}
+
+.nav__logo-text {
+  color: var(--color-dorado-claro);
+  font-weight:200;
+  margin-left: 0.5rem;
+  line-height: 1.2;
+  font-size: 18px;
+}
+
+.text-logo{
+  letter-spacing: 0.1rem;
+}
+.nav__menu {
+  display: flex;
+  align-items: center;      /* Alineación vertical */
+  gap: 2rem;                /* Espaciado entre elementos */
+}
+
+.nav__list {
+  display: flex;
+  align-items: center;      /* Alineación vertical */
+  gap: 2rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__item {
+  
+  position: relative;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: var(--color-fondo-suave--);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+ .nav__link:hover {
+    color: var(--color-dorado);
+  }
+
+
+.material-icons {
+  font-size: 20px;
+  vertical-align: middle;
+}
+
+/* Badge de usuario */
+.user-badge {
+  background-color: #f2c108;
+  color: black;
+  border: solid 4px var(--color-marron-cuero);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/*-----------------------------------------------------FOOTER-----------------------------------------------*/
+footer {
+  display: flex;
+  margin-top: 4rem;
+  height: 130px;
+  background: var(--color-negro-elegante);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  width: 100%;
+ 
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%; /* <-- Ocupa todo el ancho disponible */
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+
+
+
+.footer-logo {
+ 
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-logo span{
+  color: var(--color-dorado);
+}
+
+.footer-content p {
+ text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-dorado-oscuro);
+}
+
+.footer-content p small {
+  font-weight: bold;
+ }
+
+.footer-content small {
+  font-size: 0.75rem;
+}
+
+
+
+
+
+
+ .nav__item--perfil {
+  margin-left: 20px;
+  position: relative;
+}
+
+.dropdown-menu li a {
+  
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #333;
+  text-decoration: none;
+}
+
+.dropdown-menu li:hover {
+  
+ background: var(--color-dorado-claro);
+ 
+}
+
+
+/* Ocultar el menú por defecto */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 150%; 
+  right: 0;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  list-style: none;
+  padding: 0.5rem 0;
+  min-width: 160px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+/* Mostrar cuando tiene la clase .show */
+.dropdown-menu.show {
+  display: block;
+}
+
+
+
+  
 
 table {
   margin: 0  auto;
