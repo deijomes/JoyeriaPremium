@@ -320,7 +320,7 @@ document.addEventListener('click', (e) => {
     const oldLi = e.target.closest('li');
     const newLi = document.createElement('li');
     newLi.classList.add('nav__item');
-    newLi.innerHTML = '<a href="#" class="nav__link" id="link-act">Inicio</a>';
+    newLi.innerHTML = '<a href="#" class="nav__link" id="link-act">Actividad</a>';
     newLi.style.cursor = 'pointer';
 
     if (oldLi && oldLi.parentNode) {
@@ -337,7 +337,7 @@ document.addEventListener('click', (e) => {
     const oldLi = e.target.closest('li');
     const newLi = document.createElement('li');
     newLi.classList.add('nav__item');
-    newLi.innerHTML = '<a href="#" class="nav__link" id="link-home">Act</a>';
+    newLi.innerHTML = '<a href="#" class="nav__link" id="link-home">Home</a>';
     newLi.style.cursor = 'pointer';
 
     if (oldLi && oldLi.parentNode) {
@@ -347,23 +347,20 @@ document.addEventListener('click', (e) => {
 });
 
 });
+const routes = {
+  '/home': 'pages/inicio.html',
+  '/about': 'pages/about.html',
+  '/contact': 'pages/contact.html'
+};
 
-
-async function Vista(ruta, ocultarNavbarFooter = false) {
+async function Vista(ruta, ocultarNavbarFooter = false, cssRuta = null) {
   const contenedor = document.getElementById('contenido');
   const header = document.querySelector('header');
   const footer = document.querySelector('footer');
 
-  if (header && footer) {
-    header.style.display = ocultarNavbarFooter ? 'none' : 'block';
-    footer.style.display = ocultarNavbarFooter ? 'none' : 'block';
-  }
+  if (header) header.style.display = ocultarNavbarFooter ? 'none' : 'block';
+  if (footer) footer.style.display = ocultarNavbarFooter ? 'none' : 'block';
 
-
-
-
-
-  // Animaciones fade (igual que antes)
   contenedor.classList.add('fade-out');
   await new Promise(resolve => setTimeout(resolve, 300));
 
@@ -374,6 +371,20 @@ async function Vista(ruta, ocultarNavbarFooter = false) {
     const html = await res.text();
     contenedor.innerHTML = html;
 
+    if (cssRuta) {
+      let existing = document.getElementById('vista-css');
+      if (existing) existing.remove();
+
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = cssRuta;
+      link.id = 'vista-css';
+      document.head.appendChild(link);
+    } else {
+      const oldCss = document.getElementById('vista-css');
+      if (oldCss) oldCss.remove();
+    }
+
     contenedor.classList.remove('fade-out');
     contenedor.classList.add('fade-in');
     setTimeout(() => contenedor.classList.remove('fade-in'), 100);
@@ -383,13 +394,16 @@ async function Vista(ruta, ocultarNavbarFooter = false) {
   }
 }
 
+function router() {
+  const path = location.hash.slice(1) || '/home';
+  const ruta = routes[path] || routes['/home'];
+  Vista(ruta);
+}
+
+window.addEventListener('hashchange', router);
+window.addEventListener('DOMContentLoaded', router);
 
 
-
-// Uso para login sin navbar/footer
-document.getElementById('Inicio-Sesion').addEventListener('click', () => {
-  Vista('loguin/loguin.html', true, 'loguin/loguin.css');
-});
 
 
 const userToggle = document.querySelector('.user-toggle');
