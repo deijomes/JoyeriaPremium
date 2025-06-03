@@ -198,7 +198,7 @@ function renderProductos(productos) {
     newCard.innerHTML = `
       <div class="card-image">
         <img src="${imgSrc}" alt="${producto.nombre}">
-         <span class="material-icons cart-icon">
+         <span class="material-icons cart-icon agregar">
                 shopping_cart
               </span>
        
@@ -216,32 +216,21 @@ function renderProductos(productos) {
       </div>
     `;
 
-
-
     cardList.appendChild(newCard);
   });
 
   resetScrollPosition();
+  agregarCarrito();
 }
-
-
 
 function resetScrollPosition() {
   cardList.scrollTop = 0;
 }
-
-// Ejecutar al cargar
+function agregarCarrito(){
+  const botonAgregar = document.querySelectorAll('.agregar')
+  console.log(botonAgregar)
+}
 renderProductos(productos);
-
-
-
-setTimeout(() => {
-  addNewCard();  // Agregar una nueva tarjeta después de 2 segundos
-}, 2000);
-
-setTimeout(() => {
-  removeFirstCard();  // Eliminar la primera tarjeta después de 4 segundos
-}, 4000);
 
 document.getElementById("year").textContent = new Date().getFullYear();
 
@@ -257,7 +246,6 @@ function scrollHandler() {
   }
 }
 
-// 💡 Paso 2: Añade el evento scroll con la función nombrada
 window.addEventListener('scroll', scrollHandler);
 
 
