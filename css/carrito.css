@@ -97,9 +97,10 @@ body {
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 1.5rem;
   margin-bottom: 30px;
-  color: #333;
+  color: var(--color-dorado-claro);
+  letter-spacing: 0.2rem;
 }
 
 .cart-item {
@@ -117,6 +118,7 @@ h1 {
   object-fit: cover;
   border-radius: 8px;
   background-color: #f0f0f0;
+  border: 1px dashed var(--color-dorado);
 }
 
 .product-details {
@@ -159,7 +161,7 @@ h1 {
 
 .product-stock {
   font-size: 13px;
-  color: #c400c4;
+  color:  var(--color-marron-cuero);
   font-weight: 500;
 }
 
@@ -173,7 +175,7 @@ h1 {
 }
 
 .remove-btn:hover {
-  color: red;
+  color: var(--color-dorado);
 }
 
 .btn-remove:hover {

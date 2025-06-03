@@ -1,87 +1,97 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Carrito de Compras</title>
-  <link rel="stylesheet" href="/css/carrito.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Carrito de Compras</title>
+    <link rel="stylesheet" href="/css/carrito.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=delete" />
 </head>
+
 <body>
-  <div class="cart-container">
+    <div class="cart-container">
 
-    <!-- Vista cuando NO hay productos -->
-    <div class="cart-empty" id="vista-vacia">
-      <img src="img/cart-empty.png" alt="Carrito vacío" />
-      <h2>Tu carrito está vacío</h2>
-      <p>¡Explora nuestra colección y encuentra la joya perfecta para ti!</p>
-      <a href="/catalogo" class="btn-ir-catalogo">Ir al catálogo</a>
-    </div>
-
-  <div class="cart-container_productos">
-  <!-- Productos -->
-  <div class="cart-prodcutos">
-    <h1>Tu Carrito</h1>
-
-    <div class="cart-item">
-      <img src="https://via.placeholder.com/120x120" alt="Tenis 1" class="product-img" />
-      <div class="product-details">
-       
-        <div class="product-name">Tenis Negro-Blanco Royal Court</div>
-         <div class="product-brand">Royal County Of Berkshire</div>
-        
-        <div class="product-price">
-          <span class="old-price">$159.900</span>
-          <span class="new-price">$92.900</span>
+        <!-- Vista cuando NO hay productos -->
+        <div class="cart-empty" id="vista-vacia">
+            <img src="img/cart-empty.png" alt="Carrito vacío" />
+            <h2>Tu carrito está vacío</h2>
+            <p>¡Explora nuestra colección y encuentra la joya perfecta para ti!</p>
+            <a href="/catalogo" class="btn-ir-catalogo">Ir al catálogo</a>
         </div>
-        <div class="product-stock">Última unidad</div>
-      </div>
-      <button class="remove-btn" title="Eliminar">
-        🗑️
-      </button>
-    </div>
-   
 
-    <div class="cart-item">
-      <img src="https://via.placeholder.com/120x120" alt="Tenis 1" class="product-img" />
-      <div class="product-details">
-       
-        <div class="product-name">Tenis Negro-Blanco Royal Court</div>
-         <div class="product-brand">Royal County Of Berkshire</div>
-        
-        <div class="product-price">
-          <span class="old-price">$159.900</span>
-          <span class="new-price">$92.900</span>
+        <div class="cart-container_productos">
+            <!-- Productos -->
+            <div class="cart-prodcutos">
+                <h1>Tu carrito <span class="material-icons">shopping_cart</span></h1>
+
+                <div class="cart-item">
+                    <img src="https://via.placeholder.com/120x120" alt="Tenis 1" class="product-img" />
+                    <div class="product-details">
+
+                        <div class="product-name">Tenis Negro-Blanco Royal Court</div>
+                        <div class="product-brand">Royal County Of Berkshire</div>
+
+                        <div class="product-price">
+                            <span class="old-price">$159.900</span>
+                            <span class="new-price">$92.900</span>
+                        </div>
+                        <div class="product-stock">Última unidad</div>
+                    </div>
+                    <button class="remove-btn" title="Eliminar">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span>
+                    </button>
+                </div>
+
+
+                <div class="cart-item">
+                    <img src="https://via.placeholder.com/120x120" alt="Tenis 1" class="product-img" />
+                    <div class="product-details">
+
+                        <div class="product-name">Tenis Negro-Blanco Royal Court</div>
+                        <div class="product-brand">Royal County Of Berkshire</div>
+
+                        <div class="product-price">
+                            <span class="old-price">$159.900</span>
+                            <span class="new-price">$92.900</span>
+                        </div>
+                        <div class="product-stock">Última unidad</div>
+                    </div>
+                    <button class="remove-btn" title="Eliminar"><span class="material-symbols-outlined">
+                            delete
+                        </span>
+
+                    </button>
+                </div>
+
+
+            </div>
+
+            <!-- Resumen -->
+            <div class="cart-summary-card">
+                <h2>Resumen de compra</h2>
+                <div class="summary-item">
+                    <span>Total unitario:</span>
+                    <span>$1,250.00</span>
+                </div>
+                <div class="summary-item">
+                    <span>Cantidad total:</span>
+                    <span>1</span>
+                </div>
+                <div class="summary-item" style="font-weight:bold; font-size:1.2rem;">
+                    <span>Total a pagar:</span>
+                    <span>$1,250.00</span>
+                </div>
+
+                <button class="btn-checkout">Procesar pago</button>
+                <button class="btn-continue">Continuar comprando</button>
+            </div>
+
         </div>
-        <div class="product-stock">Última unidad</div>
-      </div>
-      <button class="remove-btn" title="Eliminar">
-        🗑️
-      </button>
-    </div>
-
-    
-  </div>
-
-  <!-- Resumen -->
-  <div class="cart-summary-card">
-    <h2>Resumen de compra</h2>
-    <div class="summary-item">
-      <span>Total unitario:</span>
-      <span>$1,250.00</span>
-    </div>
-    <div class="summary-item">
-      <span>Cantidad total:</span>
-      <span>1</span>
-    </div>
-    <div class="summary-item" style="font-weight:bold; font-size:1.2rem;">
-      <span>Total a pagar:</span>
-      <span>$1,250.00</span>
-    </div>
-
-    <button class="btn-checkout">Procesar pago</button>
-    <button class="btn-continue">Continuar comprando</button>
-  </div>
-
-  </div>
 </body>
+
 </html>
