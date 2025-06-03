@@ -134,38 +134,105 @@ observer.observe(cardList, {
   subtree: true,    // Detectar cambios en todos los elementos dentro de cardList
 });
 
-// -------------------------
-// Funciones para agregar y eliminar tarjetas (simulando el cambio dinámico)
-// -------------------------
-function addNewCard() {
-  const newCard = document.createElement('li');
-  newCard.classList.add('list-item');
-  newCard.innerHTML = `
-    <div class="card-image">
-      <img src="/img/joyeria-oro-tienda-.avif" alt="Nueva Pulsera">
-      <span class="material-symbols-outlined">favorite</span>
-      <span class="badge">Pulsera</span>
-    </div>
-    <div class="card-body">
-      <h2 class="card-title">Pulsera nueva</h2>
-      <p class="card-price">
-        <span class="current-price">$320.000</span>
-        <span class="old-price">$380.000</span>
-      </p>
-      <button class="card-btn">Comprar ahora</button>
-    </div>
-  `;
-  cardList.appendChild(newCard);
-  resetScrollPosition(); // Reajustar la posición del scroll
+// -------------------------------------------------------------------------------------------------------------------------------
+const productos = [
+  {
+    id: 1,
+    nombre: "Producto A",
+    codigo: "COD123",
+    categoria: null,
+    descripcion: null,
+    precioDeVenta: 0.0000,
+    stock: 5,
+    imagenProductos: []
+  },
+  {
+    id: 2,
+    nombre: "Producto B",
+    codigo: "COD456",
+    categoria: "oro",
+    descripcion: "pulsera baño en oro",
+    precioDeVenta: 500.0000,
+    stock: 3,
+    imagenProductos: []
+  },
+  {
+    id: 3,
+    nombre: "Producto c",
+    codigo: "COD123",
+    categoria: null,
+    descripcion: null,
+    precioDeVenta: 10000,
+    stock: 5,
+    imagenProductos: []
+  },
+  {
+    id: 4,
+    nombre: "Producto d",
+    codigo: "COD456",
+    categoria: "oro",
+    descripcion: "pulsera baño en oro",
+    precioDeVenta: 500.0000,
+    stock: 3,
+    imagenProductos: []
+  }
+];
+
+const cardLis = document.getElementById('cardList');
+
+function formatPrecio(precio) {
+  return precio.toLocaleString('es-CO', { minimumFractionDigits: 0 });
 }
 
-function removeFirstCard() {
-  const firstCard = cardList.querySelector('.list-item');
-  if (firstCard) {
-    firstCard.remove();
-    resetScrollPosition(); // Reajustar la posición del scroll
-  }
+function renderProductos(productos) {
+  cardLis.innerHTML = ''; // limpiar lista
+
+  productos.forEach(producto => {
+    const newCard = document.createElement('li');
+    newCard.classList.add('list-item');
+    // Imagen predeterminada si no hay
+    const imgSrc = producto.imagenProductos.length > 0
+      ? producto.imagenProductos[0]
+      : '/img/joyeria-oro-tienda-.avif';
+
+    newCard.innerHTML = `
+      <div class="card-image">
+        <img src="${imgSrc}" alt="${producto.nombre}">
+         <span class="material-icons cart-icon">
+                shopping_cart
+              </span>
+       
+        <span class="badge">${producto.nombre ?? '----'}</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">${producto.descripcion}</h2>
+        <p class="card-price">
+          <span class="current-price">$${formatPrecio(producto.precioDeVenta)}</span>
+          ${producto.precioDeVenta > 0
+        ? `<span class="old-price">$${formatPrecio(producto.precioDeVenta * 1.2)}</span>`
+        : ''}
+        </p>
+        <button class="card-btn">Comprar ahora</button>
+      </div>
+    `;
+
+
+
+    cardList.appendChild(newCard);
+  });
+
+  resetScrollPosition();
 }
+
+
+
+function resetScrollPosition() {
+  cardList.scrollTop = 0;
+}
+
+// Ejecutar al cargar
+renderProductos(productos);
+
 
 
 setTimeout(() => {
@@ -204,10 +271,10 @@ window.addEventListener('scroll', scrollHandler);
 
 
 document.getElementById('Inicio-Sesion').addEventListener('click', function (event) {
-    event.preventDefault(); 
-       window.location.href = 'pages/loguin.html'
-    
-  });
+  event.preventDefault();
+  window.location.href = 'pages/loguin.html'
+
+});
 
 
 const userToggle = document.querySelector('.user-toggle');
