@@ -1,6 +1,5 @@
 
-console.log("✅ El archivo .js se ha cargado correctamente");
-// Seleccionar los elementos del DOM
+
 const navToggle = document.getElementById('nav-toggle');
 const navClose = document.getElementById('nav-close');
 const navMenu = document.getElementById('nav-menu');
@@ -117,16 +116,14 @@ function handleSwipe(start, end) {
   }
 }
 
-// -------------------------
-// Recalcular la posición de scroll cuando se modifiquen los elementos
+
 // -------------------------
 function resetScrollPosition() {
   scrollPosition = 0;
   cardList.scrollTo({ left: scrollPosition, behavior: 'smooth' });
 }
 
-// -------------------------
-// Uso de MutationObserver para observar cambios en el DOM
+
 // -------------------------
 const observer = new MutationObserver(() => {
   updateItemWidth(); // Recalcular el ancho de los elementos después de cualquier cambio
@@ -211,8 +208,6 @@ document.getElementById('Inicio-Sesion').addEventListener('click', function (eve
        window.location.href = 'pages/loguin.html'
     
   });
-
-
 
 
 const userToggle = document.querySelector('.user-toggle');
