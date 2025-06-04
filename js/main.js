@@ -198,7 +198,7 @@ function renderProductos(productos) {
     newCard.innerHTML = `
       <div class="card-image">
         <img src="${imgSrc}" alt="${producto.nombre}">
-         <span class="material-icons cart-icon agregar">
+         <span class="material-icons cart-icon agregar" id="${producto.id}">
                 shopping_cart
               </span>
        
@@ -226,10 +226,34 @@ function renderProductos(productos) {
 function resetScrollPosition() {
   cardList.scrollTop = 0;
 }
-function agregarCarrito(){
-  const botonAgregar = document.querySelectorAll('.agregar')
-  console.log(botonAgregar)
+
+/*---------------------------------------------------------logica carrito--------------------------------------------*/
+function agregarCarrito() {
+  const botonAgregar = document.querySelectorAll('.agregar');
+  console.log(botonAgregar);
+  botonAgregar.forEach(boton => {
+    boton.addEventListener("click", agregarAlCarrito);
+  });
 }
+
+const productosEnCarrito = [];
+function agregarAlCarrito(e) {
+  const idBoton = Number(e.target.id);
+  const productoAgregado = productos.find(product => product.id === idBoton);
+
+  if(productosEnCarrito.some(product => product.id ===idBoton)){
+    const index = productosEnCarrito.findIndex(product => product.id ===idBoton);
+    productosEnCarrito[index].cantidad++
+
+  } else{
+    productoAgregado.cantidad = 1
+    productosEnCarrito.push(productoAgregado)
+  }
+  
+  console.log(productosEnCarrito)
+}
+
+
 renderProductos(productos);
 
 document.getElementById("year").textContent = new Date().getFullYear();
