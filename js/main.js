@@ -252,6 +252,7 @@ function agregarAlCarrito(e) {
   }
 
   actualizarBabgeCarrito();
+  localStorage.setItem("productos-en-carrito",JSON.stringify(productosEnCarrito))
 }
 
 function actualizarBabgeCarrito() {
