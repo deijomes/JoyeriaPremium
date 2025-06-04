@@ -179,6 +179,7 @@ const productos = [
 ];
 
 const cardLis = document.getElementById('cardList');
+const badgeNumero = document.getElementById('cart-badge');
 
 function formatPrecio(precio) {
   return precio.toLocaleString('es-CO', { minimumFractionDigits: 0 });
@@ -241,16 +242,27 @@ function agregarAlCarrito(e) {
   const idBoton = Number(e.target.id);
   const productoAgregado = productos.find(product => product.id === idBoton);
 
-  if(productosEnCarrito.some(product => product.id ===idBoton)){
-    const index = productosEnCarrito.findIndex(product => product.id ===idBoton);
-    productosEnCarrito[index].cantidad++
+  if (productosEnCarrito.some(product => product.id === idBoton)) {
+    const index = productosEnCarrito.findIndex(product => product.id === idBoton);
+    productosEnCarrito[index].cantidad++;
 
-  } else{
+  } else {
     productoAgregado.cantidad = 1
     productosEnCarrito.push(productoAgregado)
   }
-  
-  console.log(productosEnCarrito)
+
+  actualizarBabgeCarrito();
+}
+
+function actualizarBabgeCarrito() {
+  const numerito = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+  badgeNumero.innerHTML = numerito;
+
+  if (numerito > 0) {
+    badgeNumero.style.display = 'inline';
+  } else {
+    badgeNumero.style.display = 'none';
+  }
 }
 
 

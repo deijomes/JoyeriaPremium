@@ -2,13 +2,13 @@
 <html lang="en">
 
 
-<head >
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>JoyeriaPremium</title>
   <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="/loguin/loguin.css">
- 
+
   <link rel="icon" type="image/png" href="/img/joyeria -  - removebg-preview.png">
 
 
@@ -43,9 +43,15 @@
           <li class="nav__item"><a href="#categorias" class="nav__link" id="categoria">Categoria</a></li>
           <li class="nav__item"><a href="#descuentos" class="nav__link" id="descuento">Descuentos</a></li>
           <li class="nav__item"><a href="#productos" class="nav__link" id="producto">Productos</a></li>
-          <li class="nav__item"><a href="/carrito.html" class="nav__link"><span class="material-icons">shopping_cart</span></a></li>
+          <li class="nav__item">
+            <a href="/carrito.html" class="nav__link carrito-container">
+              <span class="material-icons">shopping_cart</span>
+              <span class="cart-badge" id="cart-badge">0</span>
+            </a>
+          </li>
 
-         
+
+
 
           <!-- Botón de inicio de sesión -->
           <li class="nav__item Sesion">
@@ -139,7 +145,7 @@
         <ul id="cardList" class="card-list">
 
 
-          
+
 
 
 
@@ -375,8 +381,8 @@
 
 
   <script src="/js/main.js"></script>
-  
-  
+
+
 
 
 
