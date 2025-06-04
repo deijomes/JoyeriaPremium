@@ -31,18 +31,22 @@ const carritoVacio = document.querySelector('.cart-empty');
 const carritoAcciones = document.querySelector('.cart-container_productos');
 const contendorItem = document.querySelector('.card-items_container');
 
-if (productosEnCarro.length > 0) {
-  carritoVacio.style.display = 'none';
-  
 
-  productosEnCarro.forEach(producto => {
-    const imgSrc = producto.imagenProductos && producto.imagenProductos.length > 0
-      ? producto.imagenProductos[0]
-      : '/img/joyeria-oro-tienda-.avif';
 
-    const div = document.createElement("div");
-    div.classList.add("cart-item");
-    div.innerHTML = `
+function cargarProdcutosCarrito() {
+  contendorItem.innerHTML = "";
+
+  if (productosEnCarro.length > 0) {
+    carritoVacio.style.display = 'none';
+
+    productosEnCarro.forEach(producto => {
+      const imgSrc = producto.imagenProductos && producto.imagenProductos.length > 0
+        ? producto.imagenProductos[0]
+        : '/img/joyeria-oro-tienda-.avif';
+
+      const div = document.createElement("div");
+      div.classList.add("cart-item");
+      div.innerHTML = `
       <img src="${imgSrc}" alt="${producto.nombre}" class="product-img" />
       <div class="product-details">
         <div class="product-name">${producto.nombre}</div>
@@ -60,11 +64,35 @@ if (productosEnCarro.length > 0) {
       </button>
     `;
 
-    contendorItem.append(div);
-  });
+      contendorItem.append(div);
+    });
 
-} else {
-  carritoVacio.style.display = 'block';
-  carritoAcciones.style.display = 'none';
+  } else {
+    carritoVacio.style.display = 'block';
+    carritoAcciones.style.display = 'none';
+  }
+
+  actualizareliminar()
 }
 
+cargarProdcutosCarrito();
+
+function actualizareliminar() {
+  const botonesEliminar = document.querySelectorAll('.remove-btn');
+  console.log(botonesEliminar);
+
+  botonesEliminar.forEach(boton => {
+    boton.addEventListener("click", eliminarDelCarrito);
+  });
+}
+
+function eliminarDelCarrito(e) {
+  const idBoton = Number(e.currentTarget.id);
+  
+  const index = productosEnCarro.findIndex(product => product.id === idBoton);
+  productosEnCarro.splice(index,1)
+  console.log(productosEnCarro);
+  localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarro));
+  cargarProdcutosCarrito()
+  
+}
