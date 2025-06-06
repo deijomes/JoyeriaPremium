@@ -12,7 +12,11 @@ document.getElementById('login-form').addEventListener('submit', function (event
 
 
     if (email === 'admin@joyeria.com' && password === '123') {
-      alert('Inicio de sesión exitoso');
+      usuario = {
+        email:'admin@joyeria.com',
+        password: '123'
+      }
+       localStorage.setItem("usuario-logueado", JSON.stringify(usuario));
        window.location.href = '/indexAdmin.html'
     } else {
       alert('Correo o contraseña incorrectos');

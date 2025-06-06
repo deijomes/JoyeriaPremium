@@ -24,14 +24,28 @@ document.getElementById("btnContinue").addEventListener("click", function () {
 
 
 
+
 const productosEnCarro = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
 console.log(productosEnCarro);
 
 const carritoVacio = document.querySelector('.cart-empty');
 const carritoAcciones = document.querySelector('.cart-container_productos');
 const contendorItem = document.querySelector('.card-items_container');
+const botonCatalogo = document.querySelector('.btn-ir-catalogo');
 
+if (botonCatalogo) {
+  botonCatalogo.addEventListener('click', () => {
+    const usuario = JSON.parse(localStorage.getItem('usuario-logueado'));
 
+    if (usuario) {
+      // Está logueado
+      window.location.href = 'indexAdmin.html';
+    } else {
+      // No está logueado
+      window.location.href = 'index.html';
+    }
+  });
+}
 
 function cargarProdcutosCarrito() {
   contendorItem.innerHTML = "";

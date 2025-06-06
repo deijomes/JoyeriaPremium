@@ -181,9 +181,54 @@ const productos = [
 const cardLis = document.getElementById('cardList');
 const badgeNumero = document.getElementById('cart-badge');
 
+
 function formatPrecio(precio) {
   return precio.toLocaleString('es-CO', { minimumFractionDigits: 0 });
 }
+
+function cargarProductosEnSeccion(productos) {
+  const seccion = document.querySelector('.section__productos');
+
+  // Limpiar contenido previo
+  seccion.innerHTML = '';
+
+  productos.forEach(producto => {
+    const li = document.createElement('li');
+    li.classList.add('list-item');
+
+    const imgSrc = producto.imagenProductos.length > 0
+      ? producto.imagenProductos[0]
+      : '/img/joyeria-oro-tienda-.avif';
+
+    li.innerHTML = `
+      <div class="card-image">
+        <img src="${imgSrc}" alt="${producto.descripcion ?? producto.nombre}">
+      
+         <span class="material-icons cart-icon agregar" id="${producto.id}">
+                shopping_cart
+              </span>
+        <span class="badge">${producto.nombre ?? '----'}</span>
+      </div>
+      <div class="card-body">
+        <h2 class="card-title">${producto.descripcion ?? ''}</h2>
+        <p class="card-price">
+          <span class="current-price">$${formatPrecio(producto.precioDeVenta)}</span>
+          <span class="old-price">$${formatPrecio(producto.precioDeVenta * 1.2)}</span>
+        </p>
+        <button class="card-btn">Comprar ahora</button>
+      </div>
+    `;
+
+    seccion.appendChild(li);
+    agregarCarrito();
+  });
+}
+
+// Llamas a la función para cargar los productos
+cargarProductosEnSeccion(productos);
+
+
+
 
 function renderProductos(productos) {
   cardLis.innerHTML = ''; // limpiar lista
@@ -217,12 +262,14 @@ function renderProductos(productos) {
       </div>
     `;
 
-    cardList.appendChild(newCard);
+    cardLis.appendChild(newCard);
   });
 
   resetScrollPosition();
   agregarCarrito();
 }
+
+
 
 function resetScrollPosition() {
   cardList.scrollTop = 0;
