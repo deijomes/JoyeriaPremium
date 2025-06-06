@@ -38,7 +38,7 @@
   position: relative;
   animation: fadeIn 1s ease;
   border: 2px solid var(--color-dorado-oscuro);
-  margin: 150px auto;
+  margin: 50px auto;
 }
 
 .btn {
@@ -92,6 +92,7 @@ label {
 }
 
 input[type="email"],
+input[type="text"],
 input[type="password"] {
   width: 100%;
   padding: 12px;
@@ -125,6 +126,13 @@ input:focus {
   color: var(--color-dorado-oscuro);
 }
 
+
+
+.btn:hover {
+  background-color: var(--color-dorado);
+  transform: scale(1.02);
+}
+
 .login-box p {
   text-align: center;
   margin-top: 20px;
@@ -146,14 +154,10 @@ input:focus {
   color: var(--color-dorado-oscuro);
   text-decoration: underline;
   cursor: pointer;
-  
+ 
 }
 
 
-.btn:hover {
-  background-color: var(--color-dorado);
-  transform: scale(1.02);
-}
 
 footer {
   margin-top: 25px;
