@@ -19,7 +19,6 @@
 
   
   
-  
   .main__title {
    
     font-size: 2rem;
@@ -253,30 +252,12 @@
 
   /*--------------------------------------------------------SLIDER DESCUENTOS----------------------------------*/
 
-
-/* Lista de tarjetas */
-.card-list {
-  transition: transform 0.3s ease;
-  scrollbar-width: none; /* Firefox */
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  list-style: none;
-  padding: 2rem 0;
-  margin: 0;
+.section__descuentos{
   display: flex;
-  cursor: grab;
   gap: 1rem;
-  justify-content: flex-start;
-  user-select: none;
 }
-
-/* Ocultar scrollbar en WebKit (Chrome, Safari) */
-.card-list::-webkit-scrollbar {
-  display: none;
-}
-
-/* Cada tarjeta individual */
 .list-item {
+  
   list-style: none;
   scroll-snap-align: start;
   flex: 0 0 auto;
@@ -334,7 +315,7 @@
 /* Ícono carrito */
 .cart-icon {
   position: absolute;
-  top: 60px;
+  top: 20px;
   right: 10px;
   font-size: 28px;
   color: var(--color-fondo-suave--);
