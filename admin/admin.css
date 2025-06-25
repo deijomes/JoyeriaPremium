@@ -351,11 +351,16 @@ footer {
   min-width: 160px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
+  transition: opacity 0.3s ease;
+opacity: 0;
+pointer-events: none;
 }
 
 /* Mostrar cuando tiene la clase .show */
 .dropdown-menu.show {
   display: block;
+   opacity: 1;
+  pointer-events: auto;
 }
 
 
@@ -643,6 +648,29 @@ td {
       max-width: 320px;
  
     }
+
+    .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 150%; 
+  right: 0;
+  background: #000;
+  color:#b28c1f;
+ 
+  border-radius: 8px;
+  list-style: none;
+  padding: 0.5rem 0;
+  min-width: 120px;
+  
+  z-index: 1000;
+  
+opacity: 0;
+pointer-events: none;
+}
+
+.dropdown-menu a{
+  color:#b28c1f;
+}
     
     }
 

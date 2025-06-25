@@ -3,6 +3,8 @@ const navClose = document.getElementById('nav-close');
 const navMenu = document.getElementById('nav-menu');
 const iconFavorito = document.getElementById('icons');
 const navItems = document.querySelectorAll('.nav__item');
+const user_toggle =  document.querySelector('.user-toggle');
+const dropdown =  document.querySelector('.dropdown-menu');
 
 
 const slide = document.querySelectorAll('.list-item');
@@ -10,8 +12,12 @@ const dost = document.querySelector('.dost-container');
 
 
 
+user_toggle.addEventListener('click', () => {
+    dropdown.classList.toggle('show');
+  });
 
-navToggle.addEventListener('click', () => {
+
+navToggle.addEventListener('click',  () => {
   navMenu.classList.add('visible');
 });
 
