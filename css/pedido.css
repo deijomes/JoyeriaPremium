@@ -7,6 +7,7 @@
 
     .header {
       background-color: #f2f2f2;
+      margin-top: 20px;
       padding: 10px 20px;
       display: flex;
       justify-content: space-between;
@@ -86,5 +87,13 @@
     a {
       color: #c6a643;
       text-decoration: none;
+      cursor: pointer;
+    }
+
+    .container_pedido{
+        display: none;
+    }
+    .container_pedido.visible{
+        display: block;
     }
  
