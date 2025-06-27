@@ -2,7 +2,7 @@ const botones = document.querySelectorAll('.mostrar');
 
 botones.forEach(boton => {
   boton.addEventListener('click', () => {
-    // Encontramos el contenedor del pedido más cercano al botón
+   
     const container = boton.closest('.header').nextElementSibling;
 
     if (container.classList.contains('visible')) {

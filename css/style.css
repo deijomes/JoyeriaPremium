@@ -259,6 +259,12 @@ p {
     z-index: 9999;
 }
 
+.categoria-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
 
 
 
