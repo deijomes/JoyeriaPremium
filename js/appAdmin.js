@@ -5,6 +5,8 @@ const routes = {
 
 const mainContent = document.getElementById('main-content');
 
+
+
 async function loadPage(path) {
   const response = await fetch(routes[path] || routes['/home']);
   const html = await response.text();
@@ -223,3 +225,9 @@ observer.observe(document.body, { childList: true, subtree: true });
 
 // 🔸 Al iniciar: actualizar badge
 actualizarBadgeCarrito();
+
+
+
+
+
+

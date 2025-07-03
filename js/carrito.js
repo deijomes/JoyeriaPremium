@@ -28,6 +28,7 @@ document.getElementById("btnContinue").addEventListener("click", function () {
 const productosEnCarro = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
 console.log(productosEnCarro);
 
+
 const carritoVacio = document.querySelector('.cart-empty');
 const carritoAcciones = document.querySelector('.cart-container_productos');
 const contendorItem = document.querySelector('.card-items_container');
@@ -102,11 +103,59 @@ function actualizareliminar() {
 
 function eliminarDelCarrito(e) {
   const idBoton = Number(e.currentTarget.id);
-  
+
   const index = productosEnCarro.findIndex(product => product.id === idBoton);
-  productosEnCarro.splice(index,1)
+  productosEnCarro.splice(index, 1)
   console.log(productosEnCarro);
   localStorage.setItem("productos-en-carrito", JSON.stringify(productosEnCarro));
   cargarProdcutosCarrito()
-  
+  renderResumenCompra()
+
 }
+
+
+
+
+function renderResumenCompra() {
+  const productosEnCarro = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
+
+  let cantidadTotal = 0;
+  let totalUnitario = 0;
+
+  productosEnCarro.forEach(producto => {
+    cantidadTotal += producto.cantidad;
+    totalUnitario += producto.precioDeVenta * producto.cantidad;
+  });
+
+  const totalFormateado = `$${totalUnitario.toLocaleString('es-CO', { minimumFractionDigits: 0 })}`;
+
+  const resumenHTML = `
+    <div class="cart-summary-card">
+      <h2>Resumen de compra</h2>
+
+      <div class="summary-item">
+        <span>Total unitario:</span>
+        <span>${totalFormateado}</span>
+      </div>
+
+      <div class="summary-item">
+        <span>Cantidad total:</span>
+        <span>${cantidadTotal}</span>
+      </div>
+
+      <div class="summary-item" style="font-weight:bold; font-size:1.2rem;">
+        <span>Total a pagar:</span>
+        <span>${totalFormateado}</span>
+      </div>
+
+      <button class="btn-checkout" id="btnCheckout">Procesar pago</button>
+      <button class="btn-continue" id="btnContinue">Continuar comprando</button>
+    </div>
+  `;
+
+  const contenedorResumen = document.getElementById('resumen-contenedor');
+  if (contenedorResumen) {
+    contenedorResumen.innerHTML = resumenHTML;
+  }
+}
+renderResumenCompra()

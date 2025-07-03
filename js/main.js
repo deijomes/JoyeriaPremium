@@ -135,48 +135,28 @@ observer.observe(cardList, {
 });
 
 // -------------------------------------------------------------------------------------------------------------------------------
-const productos = [
-  {
-    id: 1,
-    nombre: "Producto A",
-    codigo: "COD123",
-    categoria: null,
-    descripcion: null,
-    precioDeVenta: 0.0000,
-    stock: 5,
-    imagenProductos: []
-  },
-  {
-    id: 2,
-    nombre: "Producto B",
-    codigo: "COD456",
-    categoria: "oro",
-    descripcion: "pulsera baño en oro",
-    precioDeVenta: 500.0000,
-    stock: 3,
-    imagenProductos: []
-  },
-  {
-    id: 3,
-    nombre: "Producto c",
-    codigo: "COD123",
-    categoria: null,
-    descripcion: null,
-    precioDeVenta: 10000,
-    stock: 5,
-    imagenProductos: []
-  },
-  {
-    id: 4,
-    nombre: "Producto d",
-    codigo: "COD456",
-    categoria: "oro",
-    descripcion: "pulsera baño en oro",
-    precioDeVenta: 500.0000,
-    stock: 3,
-    imagenProductos: []
+
+
+let productos = [];
+async function obtenerProductos() {
+  try {
+    const response = await fetch('https://localhost:7287/api/producto');
+    if (!response.ok) {
+      throw new Error('Error en la respuesta: ' + response.status);
+    }
+    const data = await response.json();
+    console.log('Productos:', data);
+     productos = data;
+    cargarProductosEnSeccion(data);
+    renderProductos(productos);
+  } catch (error) {
+    console.error('Error al consumir la API:', error);
   }
-];
+}
+
+obtenerProductos();
+
+
 
 const cardLis = document.getElementById('cardList');
 const badgeNumero = document.getElementById('cart-badge');
@@ -213,7 +193,7 @@ function cargarProductosEnSeccion(productos) {
         <h2 class="card-title">${producto.descripcion ?? ''}</h2>
         <p class="card-price">
           <span class="current-price">$${formatPrecio(producto.precioDeVenta)}</span>
-          <span class="old-price">$${formatPrecio(producto.precioDeVenta * 1.2)}</span>
+         
         </p>
         <button class="card-btn">Comprar ahora</button>
       </div>
@@ -225,7 +205,7 @@ function cargarProductosEnSeccion(productos) {
 }
 
 // Llamas a la función para cargar los productos
-cargarProductosEnSeccion(productos);
+
 
 
 
@@ -324,7 +304,7 @@ function actualizarBabgeCarrito() {
 }
 
 
-renderProductos(productos);
+
 
 document.getElementById("year").textContent = new Date().getFullYear();
 

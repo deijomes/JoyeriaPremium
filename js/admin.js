@@ -7,6 +7,7 @@ const user_toggle =  document.querySelector('.user-toggle');
 const dropdown =  document.querySelector('.dropdown-menu');
 
 
+
 const slide = document.querySelectorAll('.list-item');
 const dost = document.querySelector('.dost-container');
 
@@ -33,6 +34,32 @@ navItems.forEach(item => {
 });
 
 
+document.addEventListener('DOMContentLoaded', () => {
+ const user =  document.querySelector('.user-badge');
+  const usuarioData = localStorage.getItem("usuario-logueado");
+
+  if (usuarioData && user) {
+    const usuario = JSON.parse(usuarioData);
+
+    if (usuario.usuario) {
+      const nombre = usuario.usuario.trim(); // ejemplo: "mendoza"
+      console.log("Nombre:", nombre); // ✔️ Esto debería mostrarse en consola
+
+      const iniciales = nombre
+        .split(" ")                          // por si llega "juan perez"
+        .map(p => p.charAt(0).toUpperCase()) // → ['J','P']
+        .join("")                            // → 'JP'
+        .substring(0, 2);                    // → máximo 2 letras
+
+      user.textContent = iniciales;
+    } else {
+      console.warn("El objeto 'usuario-logueado' no tiene la propiedad 'usuario'");
+      user.textContent = "--";
+    }
+  } else {
+    console.warn("No hay usuario logueado en localStorage o no existe el div con id 'userBadge'");
+  }
+});
 
 
 iconFavorito.addEventListener('click', () => {
@@ -47,5 +74,4 @@ document.addEventListener("DOMContentLoaded", () => {
     icon.classList.toggle("active");
   });
 });
-
 
