@@ -154,6 +154,7 @@ input:focus {
   background-color: var(--color-dorado);
   transform: scale(1.02);
 }
+
 .contenedor-alert {
   position: fixed;
   bottom: 80px;

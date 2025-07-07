@@ -95,3 +95,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+document.addEventListener('DOMContentLoaded', () => {
+  const cerrarSesionBtn = document.getElementById('cerrar-sesion');
+
+  if (cerrarSesionBtn) {
+    cerrarSesionBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+      console.log("Cerrando sesión..."); // 👈 prueba clave
+
+      localStorage.removeItem('productos-en-carrito');
+      localStorage.removeItem('usuario-logueado');
+
+      window.location.replace('/index.html');
+    });
+  } else {
+    console.warn("❌ No se encontró el botón con id 'cerrar-sesion'");
+  }
+});

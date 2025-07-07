@@ -12,7 +12,7 @@ async function loadPage(path) {
   const html = await response.text();
   mainContent.innerHTML = html;
 
- 
+
 }
 
 
@@ -28,7 +28,7 @@ window.addEventListener('DOMContentLoaded', router);
 const productos = [];
 
 
-mainContent.addEventListener('click', function(e) {
+mainContent.addEventListener('click', function (e) {
   if (e.target.matches('.btn-agregar')) {
     e.preventDefault();
     console.log("Botón clic detectado");
@@ -53,6 +53,67 @@ mainContent.addEventListener('click', function(e) {
     document.getElementById("productoForm").reset();
   }
 });
+
+
+mainContent.addEventListener('submit', function (event) {
+  if (event.target && event.target.matches('#envioCompraForm')) {
+    event.preventDefault();
+
+    const proveedor = document.getElementById('proveedor').value.trim();
+
+    if (!proveedor || productos.length === 0) {
+      alert('Por favor, complete el proveedor y agregue al menos un producto.');
+      return;
+    }
+
+    enviarCompra(proveedor, productos);
+  }
+});
+
+async function enviarCompra(proveedor, productos) {
+  const payload = {
+    proveedor,
+    productos
+  };
+
+  try {
+    const response = await fetch('https://localhost:7287/api/compras', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error('Error al registrar la compra: ' + response.status);
+    }
+
+   
+    alert('✅ Compra registrada correctamente');
+
+    // Limpia formulario y productos
+    productos.length = 0;
+    if (typeof actualizarTabla === 'function') actualizarTabla();
+    document.getElementById("envioCompraForm").reset();
+
+  } catch (error) {
+    console.error(' Error durante la compra:', error);
+
+    const alertFallo = document.querySelector('.contenedor-alert');
+    if (alertFallo) {
+      alertFallo.classList.add('show');
+      setTimeout(() => alertFallo.classList.remove('show'), 3000);
+    }
+  }
+}
+
+
+
+
+
+
+
 
 function actualizarTabla() {
   const tbody = document.querySelector("#tablaProductos tbody");
@@ -229,5 +290,21 @@ actualizarBadgeCarrito();
 
 
 
+document.addEventListener('DOMContentLoaded', () => {
+  const cerrarSesionBtn = document.getElementById('cerrar-sesion');
 
+  if (cerrarSesionBtn) {
+    cerrarSesionBtn.addEventListener('click', function (event) {
+      event.preventDefault();
+
+
+      localStorage.removeItem('productos-en-carrito');
+      localStorage.removeItem('usuario-logueado');
+
+      window.location.replace('/index.html');
+    });
+  } else {
+    console.warn("❌ No se encontró el botón con id 'cerrar-sesion'");
+  }
+});
 
