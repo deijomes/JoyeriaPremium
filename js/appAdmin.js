@@ -55,7 +55,7 @@ mainContent.addEventListener('click', function (e) {
 });
 
 
-mainContent.addEventListener('submit', function (event) {
+mainContent.addEventListener('submit',  async function (event) {
   if (event.target && event.target.matches('#envioCompraForm')) {
     event.preventDefault();
 
@@ -66,7 +66,12 @@ mainContent.addEventListener('submit', function (event) {
       return;
     }
 
-    enviarCompra(proveedor, productos);
+    const exito = await enviarCompra(proveedor, productos);
+    
+    if (exito) {
+      location.reload();
+    }
+     
   }
 });
 
@@ -89,13 +94,18 @@ async function enviarCompra(proveedor, productos) {
       throw new Error('Error al registrar la compra: ' + response.status);
     }
 
-   
+
     alert('✅ Compra registrada correctamente');
 
     // Limpia formulario y productos
     productos.length = 0;
     if (typeof actualizarTabla === 'function') actualizarTabla();
     document.getElementById("envioCompraForm").reset();
+
+    return true;
+
+
+   
 
   } catch (error) {
     console.error(' Error durante la compra:', error);
@@ -105,12 +115,9 @@ async function enviarCompra(proveedor, productos) {
       alertFallo.classList.add('show');
       setTimeout(() => alertFallo.classList.remove('show'), 3000);
     }
+     return false;
   }
 }
-
-
-
-
 
 
 
@@ -135,6 +142,21 @@ function actualizarTabla() {
   });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 function abrirModal() {
   document.getElementById('modalProducto').style.display = 'flex';
 }
@@ -151,48 +173,68 @@ window.onclick = function (event) {
 }
 
 // 🔸 Lista de productos
-const producto = [
-  {
-    id: 1,
-    nombre: "Producto A",
-    codigo: "COD123",
-    categoria: null,
-    descripcion: null,
-    precioDeVenta: 0,
-    stock: 5,
-    imagenProductos: []
-  },
-  {
-    id: 2,
-    nombre: "Producto B",
-    codigo: "COD456",
-    categoria: "oro",
-    descripcion: "pulsera baño en oro",
-    precioDeVenta: 500000,
-    stock: 3,
-    imagenProductos: []
-  },
-  {
-    id: 3,
-    nombre: "Producto c",
-    codigo: "COD123",
-    categoria: null,
-    descripcion: null,
-    precioDeVenta: 10000,
-    stock: 5,
-    imagenProductos: []
-  },
-  {
-    id: 4,
-    nombre: "Producto d",
-    codigo: "COD456",
-    categoria: "oro",
-    descripcion: "pulsera baño en oro",
-    precioDeVenta: 500000,
-    stock: 3,
-    imagenProductos: []
+let producto = [];
+
+// 1. Obtener los productos desde la API
+async function obtenerProductos() {
+  try {
+    const response = await fetch('https://localhost:7287/api/producto');
+    const data = await response.json();
+    producto = data;
+    console.log('✅ Productos obtenidos:', producto);
+    renderizarSecciones(); // 👉 Llamar después de obtener los datos
+  } catch (error) {
+    console.error('❌ Error al obtener productos:', error);
   }
-];
+}
+
+// 2. Función que pinta las secciones si existen
+function renderizarSecciones() {
+  const seccion = document.querySelector('.section__productos');
+  const seccionDescuentos = document.querySelector('.section__descuentos');
+  const tablaAdmin = document.querySelector('.productos-table');
+
+
+  if (seccion && !seccion.dataset.loaded) {
+    seccion.dataset.loaded = "true";
+    cargarProductosEnSeccion(producto, seccion);
+  }
+
+  if (seccionDescuentos && !seccionDescuentos.dataset.loaded) {
+    seccionDescuentos.dataset.loaded = "true";
+    cargarProductosEnSeccion(producto, seccionDescuentos);
+  }
+
+  if (tablaAdmin && !tablaAdmin.dataset.loaded) {
+    tablaAdmin.dataset.loaded = "true";
+
+    if (producto && producto.length > 0) {
+      cargarProductosEnTabla(producto); // <- nueva función para tabla
+    } else {
+      obtenerProductos().then(data => {
+        cargarProductosEnTabla(data);
+      });
+    }
+  }
+
+
+}
+
+// 3. MutationObserver que espera las secciones
+function inicializarProductos() {
+  const observer = new MutationObserver(() => {
+    if (producto.length > 0) {
+      renderizarSecciones();
+    }
+  });
+
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  obtenerProductos(); // llamada inicial a la API
+}
+
+inicializarProductos()
+
 
 // 🔸 Carrito desde localStorage
 let productosEnCarrito = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
@@ -245,6 +287,54 @@ function cargarProductosEnSeccion(producto, contenedor) {
   });
 }
 
+function cargarProductosEnTabla(productos) {
+  const seccion = document.querySelector('.productos-table');
+
+  if (!seccion) return;
+
+  seccion.innerHTML = `
+    <table>
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Código</th>
+          <th>Categoría</th>
+          <th>Descripción</th>
+          <th>Precio de venta</th>
+          <th>Descuento</th>
+          <th>Stock</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${productos.map(producto => `
+          <tr data-id="${producto.id}">
+            <td>
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <div class="img-box">
+                  <img src="${producto.imagen || '/img/cadena-removebg-preview.png'}" alt="${producto.nombre}">
+                </div>
+                <span>${producto.nombre}</span>
+              </div>
+            </td>
+            <td>${producto.codigo}</td>
+            <td>${producto.categoria}</td>
+            <td>${producto.descripcion}</td>
+            <td>${producto.precioVenta}</td>
+            <td>${producto.descuento || 0}%</td>
+            <td>${producto.stock}</td>
+            <td class="actions">
+              <i class="fa fa-pen" onclick="abrirModal(${producto.id})"></i>
+              <i class="fa fa-trash" onclick="eliminarProducto(${producto.id})"></i>
+            </td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `;
+}
+
+
 // 🔸 Delegación de evento para íconos "agregar"
 document.addEventListener('click', function (e) {
   if (e.target.classList.contains('agregar')) {
@@ -267,22 +357,7 @@ document.addEventListener('click', function (e) {
 });
 
 // 🔸 Observador para renderizar productos cuando aparecen las secciones
-const observer = new MutationObserver(() => {
-  const seccion = document.querySelector('.section__productos');
-  const seccionDescuentos = document.querySelector('.section__descuentos');
 
-  if (seccion && !seccion.dataset.loaded) {
-    seccion.dataset.loaded = "true";
-    cargarProductosEnSeccion(producto, seccion);
-  }
-
-  if (seccionDescuentos && !seccionDescuentos.dataset.loaded) {
-    seccionDescuentos.dataset.loaded = "true";
-    cargarProductosEnSeccion(producto, seccionDescuentos);
-  }
-});
-
-observer.observe(document.body, { childList: true, subtree: true });
 
 // 🔸 Al iniciar: actualizar badge
 actualizarBadgeCarrito();
@@ -307,4 +382,5 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn("❌ No se encontró el botón con id 'cerrar-sesion'");
   }
 });
+
 
