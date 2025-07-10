@@ -56,8 +56,8 @@ function cargarProdcutosCarrito() {
 
     productosEnCarro.forEach(producto => {
       const imgSrc = producto.imagenProductos && producto.imagenProductos.length > 0
-        ? producto.imagenProductos[0]
-        : '/img/joyeria-oro-tienda-.avif';
+         ? producto.imagenProductos[0].foto
+      : 'img/NO IMAGEN.avif';
 
       const div = document.createElement("div");
       div.classList.add("cart-item");

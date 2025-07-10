@@ -55,7 +55,7 @@ mainContent.addEventListener('click', function (e) {
 });
 
 
-mainContent.addEventListener('submit',  async function (event) {
+mainContent.addEventListener('submit', async function (event) {
   if (event.target && event.target.matches('#envioCompraForm')) {
     event.preventDefault();
 
@@ -67,11 +67,11 @@ mainContent.addEventListener('submit',  async function (event) {
     }
 
     const exito = await enviarCompra(proveedor, productos);
-    
+
     if (exito) {
       location.reload();
     }
-     
+
   }
 });
 
@@ -105,7 +105,7 @@ async function enviarCompra(proveedor, productos) {
     return true;
 
 
-   
+
 
   } catch (error) {
     console.error(' Error durante la compra:', error);
@@ -115,7 +115,7 @@ async function enviarCompra(proveedor, productos) {
       alertFallo.classList.add('show');
       setTimeout(() => alertFallo.classList.remove('show'), 3000);
     }
-     return false;
+    return false;
   }
 }
 
@@ -157,20 +157,6 @@ function actualizarTabla() {
 
 
 
-function abrirModal() {
-  document.getElementById('modalProducto').style.display = 'flex';
-}
-
-function cerrarModal() {
-  document.getElementById('modalProducto').style.display = 'none';
-}
-
-window.onclick = function (event) {
-  const modal = document.getElementById('modalProducto');
-  if (event.target === modal) {
-    modal.style.display = 'none';
-  }
-}
 
 // 🔸 Lista de productos
 let producto = [];
@@ -262,8 +248,9 @@ function cargarProductosEnSeccion(producto, contenedor) {
     li.classList.add('list-item');
 
     const imgSrc = producto.imagenProductos.length > 0
-      ? producto.imagenProductos[0]
-      : '/img/joyeria-oro-tienda-.avif';
+      ? producto.imagenProductos[0].foto
+      : 'img/NO IMAGEN.avif';
+      
 
     li.innerHTML = `
       <div class="card-image">
@@ -312,7 +299,7 @@ function cargarProductosEnTabla(productos) {
             <td>
               <div style="display: flex; align-items: center; gap: 12px;">
                 <div class="img-box">
-                  <img src="${producto.imagen || '/img/cadena-removebg-preview.png'}" alt="${producto.nombre}">
+                  <img src="${producto.imagenProductos[0]?.foto || 'img/NO IMAGEN.avif'}" alt="${producto.nombre}">
                 </div>
                 <span>${producto.nombre}</span>
               </div>
@@ -320,7 +307,7 @@ function cargarProductosEnTabla(productos) {
             <td>${producto.codigo}</td>
             <td>${producto.categoria}</td>
             <td>${producto.descripcion}</td>
-            <td>${producto.precioVenta}</td>
+            <td>${producto.precioDeVenta}</td>
             <td>${producto.descuento || 0}%</td>
             <td>${producto.stock}</td>
             <td class="actions">
@@ -382,5 +369,116 @@ document.addEventListener('DOMContentLoaded', () => {
     console.warn("❌ No se encontró el botón con id 'cerrar-sesion'");
   }
 });
+
+
+/*-------------------------------------------------------------------modal-------------------------------------*/
+
+
+let productoId;
+let imagen;
+
+function abrirModal(id) {
+  productoId = id;
+  console.log('ID del producto:', productoId);
+  document.getElementById('modalProducto').style.display = 'flex';
+}
+
+function capturarDatosProducto() {
+  const descripcion = document.getElementById('descripcion').value.trim();
+  const categoria = document.getElementById('categoria').value;
+  const precio = parseFloat(document.getElementById('precioVenta').value);
+  const imagenInput = document.getElementById('imagen');
+
+  imagen = imagenInput.files[0];
+
+  const datosProducto = {
+
+
+    categoria,
+    descripcion,
+    precio,
+
+  };
+
+  console.log('Datos capturados:', datosProducto, 'Imagen:', imagen);
+  return datosProducto;
+}
+
+// ✅ Función para hacer la petición PUT
+async function actualizarProducto(id, datosProducto) {
+  try {
+    const respuesta = await fetch(`https://localhost:7287/api/producto/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(datosProducto)
+    });
+
+    if (!respuesta.ok) {
+      throw new Error('Error al actualizar el producto');
+    }
+
+    alert('actualizacion exitosa')
+    
+
+    return true;
+
+  } catch (error) {
+    console.error('❌ Error en la petición PUT:', error.message);
+     alert('Error al actualizar el producto: ' + error.message);
+    
+    return false;
+  }
+}
+
+async function subirImagenProducto(id, archivoImagen) {
+  const formData = new FormData();
+  formData.append('foto', archivoImagen); // usa el nombre de campo que tu backend espera
+
+  const respuesta = await fetch(`https://localhost:7287/api/producto/${id}/imagenes`, {
+    method: 'POST',
+    body: formData
+  });
+
+  if (!respuesta.ok) {
+    throw new Error('Error al subir la imagen');
+  }
+
+  console.log('✅ Imagen subida correctamente');
+}
+
+
+mainContent.addEventListener('click', async function (event) {
+  if (event.target && event.target.classList.contains('btn-agregar2')) {
+    const form = document.getElementById('productoVentaForm');
+
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+
+    const producto = capturarDatosProducto(); // también actualiza la variable global `imagen`
+
+    try {
+      await actualizarProducto(productoId, producto);
+
+      if (imagen) {
+        await subirImagenProducto(productoId, imagen);
+      }
+
+      location.reload(); // recarga la página si todo fue exitoso
+
+    } catch (error) {
+      console.error('❌ Error en el proceso:', error.message);
+      alert('Error: ' + error.message);
+    }
+  }
+});
+
+
+function cerrarModal() {
+  document.getElementById('modalProducto').style.display = 'none';
+}
 
 

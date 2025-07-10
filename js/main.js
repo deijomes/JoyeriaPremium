@@ -177,8 +177,8 @@ function cargarProductosEnSeccion(productos) {
     li.classList.add('list-item');
 
     const imgSrc = producto.imagenProductos.length > 0
-      ? producto.imagenProductos[0]
-      : '/img/joyeria-oro-tienda-.avif';
+       ? producto.imagenProductos[0].foto
+      : 'img/NO IMAGEN.avif';
 
     li.innerHTML = `
       <div class="card-image">
@@ -218,8 +218,8 @@ function renderProductos(productos) {
     newCard.classList.add('list-item');
     // Imagen predeterminada si no hay
     const imgSrc = producto.imagenProductos.length > 0
-      ? producto.imagenProductos[0]
-      : '/img/joyeria-oro-tienda-.avif';
+      ? producto.imagenProductos[0].foto
+      : 'img/NO IMAGEN.avif';
 
     newCard.innerHTML = `
       <div class="card-image">
