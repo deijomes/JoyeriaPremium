@@ -312,7 +312,7 @@ function cargarProductosEnTabla(productos) {
             <td>${producto.stock}</td>
             <td class="actions">
               <i class="fa fa-pen" onclick="abrirModal(${producto.id})"></i>
-              <i class="fa fa-trash" onclick="eliminarProducto(${producto.id})"></i>
+              
             </td>
           </tr>
         `).join('')}
