@@ -1,33 +1,57 @@
-document.getElementById("btnCheckout").addEventListener("click", function () {
-  const token = localStorage.getItem("token");
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("btnCheckout").addEventListener("click", async function () {
+    const usuarioLogueado = JSON.parse(localStorage.getItem("usuario-logueado"));
+    const productosEnCarro = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
 
-  if (!token) {
+    // Validaciones mínimas
+    if (!usuarioLogueado?.userID) {
+      alert("⚠️ Debes iniciar sesión para realizar compras.");
+       window.location.href = "/pages/loguin.html";
+      return;
+    }
 
-    window.location.href = "pages/loguin.html";
-  } else {
-    // Si hay token, continuar al checkout
-    window.location.href = "/checkout.html"; // Cambia por tu ruta real
-  }
+    if (productosEnCarro.length === 0) {
+      alert("🛒 Debes agregar productos al carrito.");
+      return;
+    }
+
+    // Construir el cuerpo del JSON
+    const body = {
+      usuarioId: usuarioLogueado.userID,
+      productos: productosEnCarro.map(p => ({
+        ProductoId: p.ProductoId || p.id,
+        Cantidad: p.Cantidad || p.cantidad
+      }))
+    };
+
+    console.log("📦 JSON a enviar:", body);
+
+    try {
+      const response = await fetch("https://localhost:7287/api/ventas", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(body)
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("✅ Respuesta del backend:", data);
+      alert("✅ Compra realizada con éxito.");
+
+    } catch (error) {
+      console.error("❌ Error al enviar la compra:", error.message);
+      alert("❌ Ocurrió un error al procesar tu compra.");
+    }
+  });
 });
-
-document.getElementById("btnContinue").addEventListener("click", function () {
-  const token = localStorage.getItem("token");
-
-  if (!token) {
-
-    window.location.href = "index.html";
-  } else {
-    // Si hay token, continuar al checkout
-    window.location.href = "/checkout.html"; // Cambia por tu ruta real
-  }
-});
-
-
 
 
 const productosEnCarro = JSON.parse(localStorage.getItem("productos-en-carrito")) || [];
-console.log(productosEnCarro);
-
 
 const carritoVacio = document.querySelector('.cart-empty');
 const carritoAcciones = document.querySelector('.cart-container_productos');
