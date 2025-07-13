@@ -90,6 +90,7 @@ const carritoVacio = document.querySelector('.cart-empty');
 const carritoAcciones = document.querySelector('.cart-container_productos');
 const contendorItem = document.querySelector('.card-items_container');
 const botonCatalogo = document.querySelector('.btn-ir-catalogo');
+const botonComprar = document.querySelector('.btnContinue');
 
 if (botonCatalogo) {
   botonCatalogo.addEventListener('click', () => {
@@ -104,6 +105,24 @@ if (botonCatalogo) {
     }
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const botonContinue = document.getElementById("btnContinue");
+
+  if (botonContinue) {
+    botonContinue.addEventListener("click", () => {
+      const usuario = JSON.parse(localStorage.getItem("usuario-logueado"));
+
+      if (usuario) {
+        // Redirigir si está logueado
+        window.location.href = "indexAdmin.html";
+      } else {
+        // Redirigir si NO está logueado
+        window.location.href = "index.html";
+      }
+    });
+  }
+});
 
 function cargarProdcutosCarrito() {
   contendorItem.innerHTML = "";
