@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Validaciones mínimas
     if (!usuarioLogueado?.userID) {
       alert("⚠️ Debes iniciar sesión para realizar compras.");
-       window.location.href = "/pages/loguin.html";
+      window.location.href = "/pages/loguin.html";
       return;
     }
 
@@ -40,8 +40,41 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const data = await response.json();
-      console.log("✅ Respuesta del backend:", data);
-      alert("✅ Compra realizada con éxito.");
+      console.log("✅ Respuesta del backend (venta):", data);
+
+      alert("💳 Redirigiendo al pago con PayPal...");
+
+      // Usar los datos de la venta para crear la orden de pago
+      const amount = data.amount;
+      const ventaId = data.ventaId;
+
+      const ordenResponse = await fetch("https://localhost:7287/api/pagos/crear-orden", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          amount: amount,
+          ventaId: ventaId,
+          returnUrl: "http://127.0.0.1:5500/index.html",
+          cancelUrl: "http://127.0.0.1:5500/index.html"
+        })
+      });
+
+      const ordenData = await ordenResponse.json();
+      console.log("✅ Orden de pago creada:", ordenData);
+
+      if (ordenData.status === "CREATED") {
+        const approveLink = ordenData.links.find(link => link.rel === "approve");
+        if (approveLink?.href) {
+         
+          window.location.href = approveLink.href;
+        } else {
+          alert("⚠️ No se encontró el enlace de aprobación de PayPal.");
+        }
+      } else {
+        alert("❌ La orden de PayPal no se creó correctamente.");
+      }
 
     } catch (error) {
       console.error("❌ Error al enviar la compra:", error.message);
@@ -80,8 +113,8 @@ function cargarProdcutosCarrito() {
 
     productosEnCarro.forEach(producto => {
       const imgSrc = producto.imagenProductos && producto.imagenProductos.length > 0
-         ? producto.imagenProductos[0].foto
-      : 'img/NO IMAGEN.avif';
+        ? producto.imagenProductos[0].foto
+        : 'img/NO IMAGEN.avif';
 
       const div = document.createElement("div");
       div.classList.add("cart-item");
