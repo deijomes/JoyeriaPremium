@@ -140,7 +140,7 @@ observer.observe(cardList, {
 let productos = [];
 async function obtenerProductos() {
   try {
-    const response = await fetch('https://localhost:7287/api/producto');
+    const response = await fetch('https://jpremium-h6gahdceh0fgbscx.canadacentral-01.azurewebsites.net/api/producto');
     if (!response.ok) {
       throw new Error('Error en la respuesta: ' + response.status);
     }

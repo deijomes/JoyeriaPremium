@@ -29,7 +29,7 @@ async function registro(nombre, correo, telefono, password) {
     };
 
     try {
-        const response = await fetch('https://localhost:7287/api/usuarios/registrar', {
+        const response = await fetch('https://jpremium-h6gahdceh0fgbscx.canadacentral-01.azurewebsites.net/api/usuarios/registrar', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

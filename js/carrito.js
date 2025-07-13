@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     console.log("📦 JSON a enviar:", body);
 
     try {
-      const response = await fetch("https://localhost:7287/api/ventas", {
+      const response = await fetch("https://jpremium-h6gahdceh0fgbscx.canadacentral-01.azurewebsites.net/api/ventas", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const amount = data.amount;
       const ventaId = data.ventaId;
 
-      const ordenResponse = await fetch("https://localhost:7287/api/pagos/crear-orden", {
+      const ordenResponse = await fetch("https://jpremium-h6gahdceh0fgbscx.canadacentral-01.azurewebsites.net/api/pagos/crear-orden", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -56,8 +56,8 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify({
           amount: amount,
           ventaId: ventaId,
-          returnUrl: "http://127.0.0.1:5500/index.html",
-          cancelUrl: "http://127.0.0.1:5500/index.html"
+          returnUrl: "http://127.0.0.1:5500/indexAdmin.html",
+          cancelUrl: "http://127.0.0.1:5500/indexAdmin.html"
         })
       });
 

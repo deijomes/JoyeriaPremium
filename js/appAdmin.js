@@ -82,7 +82,7 @@ async function enviarCompra(proveedor, productos) {
   };
 
   try {
-    const response = await fetch('https://localhost:7287/api/compras', {
+    const response = await fetch('https://jpremium-h6gahdceh0fgbscx.canadacentral-01.azurewebsites.net/api/compras', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -164,7 +164,7 @@ let producto = [];
 // 1. Obtener los productos desde la API
 async function obtenerProductos() {
   try {
-    const response = await fetch('https://localhost:7287/api/producto');
+    const response = await fetch('https://jpremium-h6gahdceh0fgbscx.canadacentral-01.azurewebsites.net/api/producto');
     const data = await response.json();
     producto = data;
     console.log('✅ Productos obtenidos:', producto);
@@ -407,7 +407,7 @@ function capturarDatosProducto() {
 // ✅ Función para hacer la petición PUT
 async function actualizarProducto(id, datosProducto) {
   try {
-    const respuesta = await fetch(`https://localhost:7287/api/producto/${id}`, {
+    const respuesta = await fetch(`https://jpremium-h6gahdceh0fgbscx.canadacentral-01.azurewebsites.net/api/producto/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json'
@@ -436,7 +436,7 @@ async function subirImagenProducto(id, archivoImagen) {
   const formData = new FormData();
   formData.append('foto', archivoImagen); // usa el nombre de campo que tu backend espera
 
-  const respuesta = await fetch(`https://localhost:7287/api/producto/${id}/imagenes`, {
+  const respuesta = await fetch(`https://jpremium-h6gahdceh0fgbscx.canadacentral-01.azurewebsites.net/api/producto/${id}/imagenes`, {
     method: 'POST',
     body: formData
   });

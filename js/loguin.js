@@ -26,7 +26,7 @@ async function login(correo, password) {
   };
 
   try {
-    const response = await fetch('https://localhost:7287/api/usuarios/login', {
+    const response = await fetch('https://jpremium-h6gahdceh0fgbscx.canadacentral-01.azurewebsites.net/api/usuarios/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
